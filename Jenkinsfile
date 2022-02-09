@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                echo 'vuexy Building...'
+                sh "sudo npm install"
+                sh "sudo npm run build"
             }
         }
         stage('Test') { 
