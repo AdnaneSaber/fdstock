@@ -19,10 +19,10 @@ pipeline {
             }
         }
         stage('Serve') { 
-            steps 
+            steps{
                 sh "sudo yarn build"
                 sh "sudo systemctl restart nginx"
             }
         }
     }
-
+}
