@@ -15,7 +15,8 @@ pipeline {
             steps {
                 sh "sudo rm -rf /var/www/vuexy/vuexy_master"
                 sh "sudo cp -r /var/lib/jenkins/workspace/vuexy_master /var/www/vuexy/"
-                sh "cd vuexy_master/"
+                sh "ls"
+                sh "sudo cd vuexy_master/"
             }
         }
         stage('Serve') { 
