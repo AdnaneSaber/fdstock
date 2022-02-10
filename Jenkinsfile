@@ -1,20 +1,26 @@
 pipeline {
     agent any 
     stages {
-        stage('Build') { 
+        stage('Installing dependencies') { 
             steps {
                 sh "sudo npm install"
-                sh "sudo npm run build"
             }
         }
         stage('Test') { 
             steps {
-                echo 'vuexy Testing...'
+                echo 'nothing to test yet...'
             }
         }
         stage('Deploy') { 
             steps {
-                echo 'vuexy Deploying...'
+                sh "sudo cp -r /var/lib/jenkins/workspace/vuexy_master /var/www/vuexy/"
+                sh "cd vuexy_master/"
+            }
+        }
+        stage('Serve') { 
+            steps 
+                sh "sudo yarn build"
+                sh "sudo systemctl restart nginx"
             }
         }
     }
