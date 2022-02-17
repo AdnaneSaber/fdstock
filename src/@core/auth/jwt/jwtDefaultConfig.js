@@ -1,9 +1,9 @@
 // ** Auth Endpoints
 export default {
-  loginEndpoint: 'http://127.0.0.1:8000/auth/jwt/create/',
-  registerEndpoint: 'http://127.0.0.1:8000/auth/users/',
-  refreshEndpoint: 'http://127.0.0.1:8000/auth/jwt/verify/',
-  logoutEndpoint: 'http://127.0.0.1:8000/jwt/logout',
+  loginEndpoint: 'https://dev.webermellon.com/auth/jwt/create/',
+  registerEndpoint: 'https://dev.webermellon.com/auth/users/',
+  refreshEndpoint: 'https://dev.webermellon.com/auth/jwt/verify/',
+  logoutEndpoint: 'https://dev.webermellon.com/jwt/logout',
 
   // ** This will be prefixed in authorization header with token
   // ? e.g. Authorization: Bearer <token>
