@@ -30,7 +30,8 @@ const defaultValues = {
   email: '',
   terms: false,
   username: '',
-  password: ''
+  password: '',
+  name:''
 }
 
 const Register = () => {
@@ -53,9 +54,9 @@ const Register = () => {
     const tempData = { ...data }
     delete tempData.terms
     if (Object.values(tempData).every(field => field.length > 0) && data.terms === true) {
-      const { username, email, password } = data
+      const { username, email, password, name } = data
       useJwt
-        .register({ username, email, password })
+        .register({ username, email, password, re_password: password, name })
         .then(res => {
           if (res.data.error) {
             for (const property in res.data.error) {
@@ -159,6 +160,20 @@ const Register = () => {
 
             <Form action='/' className='auth-register-form mt-2' onSubmit={handleSubmit(onSubmit)}>
               <div className='mb-1'>
+                <Label className='form-label' for='register-name'>
+                  Full name
+                </Label>
+                <Controller
+                  id='name'
+                  name='name'
+                  control={control}
+                  render={({ field }) => (
+                    <Input type='text' id='register-name' placeholder='John Doe' invalid={errors.name && true} {...field} />
+                  )}
+                />
+                {errors.name ? <FormFeedback>{errors.name.message}</FormFeedback> : null}
+              </div>
+              <div className='mb-1'>
                 <Label className='form-label' for='register-username'>
                   Username
                 </Label>
@@ -167,7 +182,7 @@ const Register = () => {
                   name='username'
                   control={control}
                   render={({ field }) => (
-                    <Input autoFocus placeholder='johndoe' invalid={errors.username && true} {...field} />
+                    <Input autoFocus placeholder='johndoe' id='register-username' invalid={errors.username && true} {...field} />
                   )}
                 />
                 {errors.username ? <FormFeedback>{errors.username.message}</FormFeedback> : null}
@@ -181,7 +196,7 @@ const Register = () => {
                   name='email'
                   control={control}
                   render={({ field }) => (
-                    <Input type='email' placeholder='john@example.com' invalid={errors.email && true} {...field} />
+                    <Input type='email' placeholder='john@example.com'  id='register-email' invalid={errors.email && true} {...field} />
                   )}
                 />
                 {errors.email ? <FormFeedback>{errors.email.message}</FormFeedback> : null}
@@ -195,7 +210,7 @@ const Register = () => {
                   name='password'
                   control={control}
                   render={({ field }) => (
-                    <InputPasswordToggle className='input-group-merge' invalid={errors.password && true} {...field} />
+                    <InputPasswordToggle className='input-group-merge' id='register-password' invalid={errors.password && true} {...field} />
                   )}
                 />
               </div>

@@ -45,11 +45,6 @@ const ToastContent = ({ name, role }) => (
   </Fragment>
 )
 
-const defaultValues = {
-  password: 'admin',
-  loginEmail: 'admin@demo.com'
-}
-
 const Login = () => {
   // ** Hooks
   const { skin } = useSkin()
@@ -61,7 +56,7 @@ const Login = () => {
     setError,
     handleSubmit,
     formState: { errors }
-  } = useForm({ defaultValues })
+  } = useForm()
   const illustration = skin === 'dark' ? 'login-v2-dark.svg' : 'login-v2.svg',
     source = require(`@src/assets/images/pages/${illustration}`).default
 
@@ -70,10 +65,11 @@ const Login = () => {
       useJwt
         .login({ email: data.loginEmail, password: data.password })
         .then(res => {
-          const data = { ...res.data.userData, accessToken: res.data.accessToken, refreshToken: res.data.refreshToken }
+          const data = { ...res.data, accessToken: res.data.access, refreshToken: res.data.refresh }
           dispatch(handleLogin(data))
-          ability.update(res.data.userData.ability)
+          ability.update(res.data.ability)
           history.push(getHomeRouteForLoggedInUser(data.role))
+          history.push('/')
           toast.success(
             <ToastContent name={data.fullName || data.username || 'John Doe'} role={data.role || 'admin'} />,
             { icon: false, transition: Slide, hideProgressBar: true, autoClose: 2000 }
