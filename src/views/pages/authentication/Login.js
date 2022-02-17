@@ -67,6 +67,7 @@ const Login = () => {
         .then(res => {
           const data = { ...res.data, accessToken: res.data.access, refreshToken: res.data.refresh }
           dispatch(handleLogin(data))
+          console.log(data)
           ability.update(res.data.ability)
           history.push(getHomeRouteForLoggedInUser(data.role))
           history.push('/')
