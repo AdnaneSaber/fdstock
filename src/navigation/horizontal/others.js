@@ -60,7 +60,7 @@ export default [
         icon: <Folder />,
         externalLink: true,
         newTab: true,
-        navLink: 'https://pixinvent.com/demo/vuexy-react-admin-dashboard-template/documentation'
+        navLink: 'https://futurdigital.com/demo/vuexy-react-admin-dashboard-template/documentation'
       },
       {
         id: 'raiseSupport',
@@ -68,7 +68,7 @@ export default [
         icon: <LifeBuoy />,
         externalLink: true,
         newTab: true,
-        navLink: 'https://pixinvent.ticksy.com/'
+        navLink: 'https://futurdigital.ticksy.com/'
       }
     ]
   }

@@ -22,7 +22,7 @@ const CollapsedMenu = () => {
           <span>
             Use this layout to set menu (navigation) default collapsed. Please check{' '}
             <a
-              href='https://pixinvent.com/demo/vuexy-react-admin-dashboard-template/documentation/docs/development/page-layouts'
+              href='https://futurdigital.com/demo/vuexy-react-admin-dashboard-template/documentation/docs/development/page-layouts'
               target='_blank'
             >
               the Layout collapsed menu documentation

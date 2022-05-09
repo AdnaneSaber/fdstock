@@ -67,7 +67,7 @@ const VerifyEmailCover = () => {
               </g>
             </g>
           </svg>
-          <h2 className='brand-text text-primary ms-1'>Vuexy</h2>
+          <h2 className='brand-text text-primary ms-1'>FD Stock</h2>
         </Link>
         <Col className='d-none d-lg-flex align-items-center p-5' lg='8' sm='12'>
           <div className='w-100 d-lg-flex align-items-center justify-content-center px-5'>
@@ -80,7 +80,7 @@ const VerifyEmailCover = () => {
               Verify your email ✉️
             </CardTitle>
             <CardText className='mb-2'>
-              We've sent a link to your email address: <span className='fw-bolder'>hello@pixinvent.com</span> Please
+              We've sent a link to your email address: <span className='fw-bolder'>hello@futurdigital.com</span> Please
               follow the link inside to continue.
             </CardText>
             <Button block tag={Link} to='/' color='primary'>

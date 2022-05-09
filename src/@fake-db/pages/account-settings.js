@@ -6,7 +6,7 @@ const data = {
       username: 'johndoe',
       fullName: 'John Doe',
       email: 'granger007@hogward.com',
-      company: 'PIXINVENT'
+      company: 'futurdigital'
     },
     info: {
       bio: '',

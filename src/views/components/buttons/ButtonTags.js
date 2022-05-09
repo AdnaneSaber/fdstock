@@ -20,7 +20,7 @@ const ButtonTags = () => {
           target='_blank'
           rel='noopener noreferrer'
           className='btn btn-primary'
-          href='https://pixinvent.com/'
+          href='https://futurdigital.com/'
         >
           Link
         </a>

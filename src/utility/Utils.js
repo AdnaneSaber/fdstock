@@ -1,6 +1,9 @@
 // ** Checks if an object is empty (returns boolean)
 export const isObjEmpty = obj => Object.keys(obj).length === 0
 
+export const percentage = (val, total, fixed = 2) => {
+  return ((100 * val) / total).toFixed(fixed)
+}
 // ** Returns K format from a number
 export const kFormatter = num => (num > 999 ? `${(num / 1000).toFixed(1)}k` : num)
 
@@ -8,7 +11,7 @@ export const kFormatter = num => (num > 999 ? `${(num / 1000).toFixed(1)}k` : nu
 export const htmlToString = html => html.replace(/<\/?[^>]+(>|$)/g, '')
 
 // ** Checks if the passed date is today
-const isToday = date => {
+export const isToday = date => {
   const today = new Date()
   return (
     /* eslint-disable operator-linebreak */
@@ -28,7 +31,7 @@ const isToday = date => {
  */
 export const formatDate = (value, formatting = { month: 'short', day: 'numeric', year: 'numeric' }) => {
   if (!value) return value
-  return new Intl.DateTimeFormat('en-US', formatting).format(new Date(value))
+  return new Intl.DateTimeFormat('fr-FR', formatting).format(new Date(value))
 }
 
 // ** Returns short month of passed date
@@ -59,9 +62,9 @@ export const getUserData = () => JSON.parse(localStorage.getItem('userData'))
  * ? NOTE: If you have different pages to navigate based on user ability then this function can be useful. However, you need to update it.
  * @param {String} userRole Role of user
  */
-export const getHomeRouteForLoggedInUser = userRole => {
-  if (userRole === 'admin') return '/'
-  if (userRole === 'client') return '/access-control'
+export const getHomeRouteForLoggedInUser = () => {
+  // if (userRole === 'admin') return '/'
+  // if (userRole === 'client') return '/access-control'
   return '/'
 }
 

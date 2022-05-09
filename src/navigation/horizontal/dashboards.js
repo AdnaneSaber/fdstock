@@ -17,7 +17,7 @@ export default [
         id: 'eCommerceDash',
         title: 'eCommerce',
         icon: <ShoppingCart />,
-        navLink: '/dashboard/ecommerce'
+        navLink: '/dashboard/'
       }
     ]
   }

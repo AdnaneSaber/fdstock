@@ -1,21 +1,32 @@
 // ** Third Party Components
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 import Chart from 'react-apexcharts'
-import { MoreVertical } from 'react-feather'
+import { HelpCircle } from 'react-feather'
 
 // ** Reactstrap Imports
 import {
   Card,
   CardBody,
-  CardText,
   CardTitle,
   CardHeader,
-  DropdownMenu,
-  DropdownItem,
-  DropdownToggle,
-  UncontrolledDropdown
+  UncontrolledTooltip
 } from 'reactstrap'
 
+import { percentage } from '@utils'
+
 const CardBrowserState = ({ colors, trackBgColor }) => {
+  // const [data, setData] = useState(null)
+  const [browsers, setBrowsers] = useState(null)
+  const correspondant = {
+    "Google Chrome": "chrome",
+    "Mozila Firefox": "firefox",
+    "Apple Safari": "safari",
+    "Internet Explorer": "ie",
+    Opera: "opera",
+    Edge: "edge",
+    Unknown: "unknown"
+  }
   const statesArr = [
     {
       avatar: require('@src/assets/images/icons/google-chrome.png').default,
@@ -199,7 +210,7 @@ const CardBrowserState = ({ colors, trackBgColor }) => {
     },
     {
       avatar: require('@src/assets/images/icons/opera.png').default,
-      title: 'Opera Mini',
+      title: 'Opera',
       value: '8.4%',
       chart: {
         type: 'radialBar',
@@ -241,53 +252,158 @@ const CardBrowserState = ({ colors, trackBgColor }) => {
           }
         }
       }
+    },
+    {
+      avatar: require('@src/assets/images/icons/edge.png').default,
+      title: 'Edge',
+      value: '10.4%',
+      chart: {
+        type: 'radialBar',
+        series: [10.4],
+        height: 30,
+        width: 30,
+        options: {
+          grid: {
+            show: false,
+            padding: {
+              left: -15,
+              right: -15,
+              top: -12,
+              bottom: -15
+            }
+          },
+          colors: [colors.success.main],
+          plotOptions: {
+            radialBar: {
+              hollow: {
+                size: '22%'
+              },
+              track: {
+                background: trackBgColor
+              },
+              dataLabels: {
+                showOn: 'always',
+                name: {
+                  show: false
+                },
+                value: {
+                  show: false
+                }
+              }
+            }
+          },
+          stroke: {
+            lineCap: 'round'
+          }
+        }
+      }
+    },
+    {
+      avatar: <HelpCircle size={24} className="rounded me-1" />,
+      title: 'Unknown',
+      value: '10.4%',
+      chart: {
+        type: 'radialBar',
+        series: [10.4],
+        height: 30,
+        width: 30,
+        options: {
+          grid: {
+            show: false,
+            padding: {
+              left: -15,
+              right: -15,
+              top: -12,
+              bottom: -15
+            }
+          },
+          colors: [colors.success.main],
+          plotOptions: {
+            radialBar: {
+              hollow: {
+                size: '22%'
+              },
+              track: {
+                background: trackBgColor
+              },
+              dataLabels: {
+                showOn: 'always',
+                name: {
+                  show: false
+                },
+                value: {
+                  show: false
+                }
+              }
+            }
+          },
+          stroke: {
+            lineCap: 'round'
+          }
+        }
+      }
     }
   ]
+  const fetchBrowsers = async () => {
+    const res = await axios.get(process.env.REACT_APP_API, { params: { allviews: true } })
+    if (res.data !== null) {
+      setBrowsers(statesArr.map(browser => {
+        return {
+          ...browser,
+          value: `${percentage(parseInt(res.data[correspondant[browser.title]]), res.data.allviews)}%`,
+          chart: {
+            ...browser.chart,
+            series: [percentage(parseInt(res.data[correspondant[browser.title]]), res.data.allviews)]
+          }
+        }
+      }))
+    }
+  }
+  useEffect(() => {
+    fetchBrowsers()
+  }, [])
 
   const renderStates = () => {
-    return statesArr.map(state => {
-      return (
-        <div key={state.title} className='browser-states'>
-          <div className='d-flex'>
-            <img className='rounded me-1' src={state.avatar} height='30' alt={state.title} />
-            <h6 className='align-self-center mb-0'>{state.title}</h6>
+    if (browsers !== null) {
+      return browsers.map(state => {
+        return (
+          <div key={state.title} className='browser-states'>
+            <div className='d-flex'>
+              {
+                typeof state.avatar === "string" ? <img className='rounded me-1' src={state.avatar} height='30' alt={state.title} /> : state.avatar
+              }
+
+              <h6 className='align-self-center mb-0'>{state.title}</h6>
+            </div>
+            <div className='d-flex align-items-center'>
+              <div className='fw-bold text-body-heading me-1'>{state.value}</div>
+              <Chart
+                options={state.chart.options}
+                series={state.chart.series}
+                type={state.chart.type}
+                height={state.chart.height}
+                width={state.chart.width}
+              />
+            </div>
           </div>
-          <div className='d-flex align-items-center'>
-            <div className='fw-bold text-body-heading me-1'>{state.value}</div>
-            <Chart
-              options={state.chart.options}
-              series={state.chart.series}
-              type={state.chart.type}
-              height={state.chart.height}
-              width={state.chart.width}
-            />
-          </div>
-        </div>
-      )
-    })
+        )
+      })
+    }
   }
 
   return (
     <Card className='card-browser-states'>
-      <CardHeader>
+      <CardHeader className='mb-2'>
         <div>
-          <CardTitle tag='h4'>Browser States</CardTitle>
-          <CardText className='font-small-2'>Counter August 2020</CardText>
+          <CardTitle tag='h4'>Statistiques du navigateur</CardTitle>
         </div>
-        <UncontrolledDropdown className='chart-dropdown'>
-          <DropdownToggle color='' className='bg-transparent btn-sm border-0 p-50'>
-            <MoreVertical size={18} className='cursor-pointer' />
-          </DropdownToggle>
-          <DropdownMenu end>
-            <DropdownItem className='w-100'>Last 28 Days</DropdownItem>
-            <DropdownItem className='w-100'>Last Month</DropdownItem>
-            <DropdownItem className='w-100'>Last Year</DropdownItem>
-          </DropdownMenu>
-        </UncontrolledDropdown>
+        <HelpCircle size={18} className='cursor-pointer text-muted' id="helpBrowser" />
+        <UncontrolledTooltip target="helpBrowser" placement="left">
+          Navigateur des visiteurs de la galerie répartie par navigateur
+        </UncontrolledTooltip>
       </CardHeader>
       <CardBody>{renderStates()}</CardBody>
     </Card>
   )
 }
-
 export default CardBrowserState

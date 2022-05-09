@@ -59,7 +59,7 @@ const License = () => {
         </CardHeader>
         <CardBody>
           <CardText className='mb-2 pb-1'>
-            Use of any product you buy from PIXINVENT is bound by the license you purchase. It will allow you the
+            Use of any product you buy from futurdigital is bound by the license you purchase. It will allow you the
             non-exclusive access to use it in your personal as well as client projects.
           </CardText>
           <Table className='text-center text-nowrap' responsive bordered>

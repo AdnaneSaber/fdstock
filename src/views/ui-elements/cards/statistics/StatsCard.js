@@ -1,40 +1,49 @@
 // ** Third Party Components
 import classnames from 'classnames'
-import { TrendingUp, User, Box, DollarSign } from 'react-feather'
+import { Zap, Map, Tool, Package } from 'react-feather'
 
 // ** Custom Components
 import Avatar from '@components/avatar'
 
 // ** Reactstrap Imports
 import { Card, CardHeader, CardTitle, CardBody, CardText, Row, Col } from 'reactstrap'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 const StatsCard = ({ cols }) => {
   const data = [
     {
-      title: '230k',
-      subtitle: 'Sales',
-      color: 'light-primary',
-      icon: <TrendingUp size={24} />
-    },
-    {
-      title: '8.549k',
-      subtitle: 'Customers',
-      color: 'light-info',
-      icon: <User size={24} />
-    },
-    {
-      title: '1.423k',
-      subtitle: 'Products',
+      title: '',
+      subtitle: 'Couverture',
       color: 'light-danger',
-      icon: <Box size={24} />
+      icon: <Map size={24} />
     },
     {
-      title: '$9745',
-      subtitle: 'Revenue',
+      title: '',
+      subtitle: 'Plomberie',
+      color: 'light-info',
+      icon: <Tool size={24} />
+    },
+    {
+      title: '',
+      subtitle: 'Énergie',
       color: 'light-success',
-      icon: <DollarSign size={24} />
+      icon: <Zap size={24} />
+    },
+    {
+      title: '',
+      subtitle: 'Déménagement',
+      color: 'light-warning',
+      icon: <Package size={24} />
     }
   ]
+  const [stats, setStats] = useState({})
+  useEffect(() => {
+    let categories = ""
+    categories += data.map(el => `${el.subtitle},`)
+    categories = categories.substring(0, categories.length - 1)
+    axios.get(process.env.REACT_APP_API, { params: { categories } }).then(res => setStats(res.data))
+  }, [cols])
 
   const renderData = () => {
     return data.map((item, index) => {
@@ -51,7 +60,7 @@ const StatsCard = ({ cols }) => {
           <div className='d-flex align-items-center'>
             <Avatar color={item.color} icon={item.icon} className='me-2' />
             <div className='my-auto'>
-              <h4 className='fw-bolder mb-0'>{item.title}</h4>
+              <h4 className='fw-bolder mb-0'>{stats[item.subtitle]}</h4>
               <CardText className='font-small-3 mb-0'>{item.subtitle}</CardText>
             </div>
           </div>
@@ -63,8 +72,8 @@ const StatsCard = ({ cols }) => {
   return (
     <Card className='card-statistics'>
       <CardHeader>
-        <CardTitle tag='h4'>Statistics</CardTitle>
-        <CardText className='card-text font-small-2 me-25 mb-0'>Updated 1 month ago</CardText>
+        <CardTitle tag='h4'>Statistiques d'images</CardTitle>
+        <CardText className='card-text font-small-2 me-25 mb-0'>Just now</CardText>
       </CardHeader>
       <CardBody className='statistics-body'>
         <Row>{renderData()}</Row>

@@ -1,22 +1,28 @@
 // ** Reactstrap Imports
 import { Card, CardBody, CardText, Button } from 'reactstrap'
-
+import axios from 'axios'
 // ** Images
 import medal from '@src/assets/images/illustration/badge.svg'
+import { useState, useEffect } from 'react'
 
+import { kFormatter } from '@utils'
 const CardMedal = () => {
+  const [count, setCount] = useState(0)
+  useEffect(() => {
+    axios.get(process.env.REACT_APP_API, { params: { count: true, gallery: true } }).then(res => res.data && setCount(res.data.count))
+  }, [count])
+
   return (
     <Card className='card-congratulations-medal'>
       <CardBody>
-        <h5>Congratulations 🎉 John!</h5>
-        <CardText className='font-small-3'>You have won gold medal</CardText>
-        <h3 className='mb-75 mt-2 pt-50'>
+        <h5>Bienvenue à FD Stock 🎉</h5>
+        <CardText className='font-small-3'>Banque d'image Futur digital</CardText>
+        <h3 className='mb-75 mt-3 pt-50'>
           <a href='/' onClick={e => e.preventDefault()}>
-            $48.9k
+            +{kFormatter(count)} <small className='text-muted'>images</small>
           </a>
         </h3>
-        <Button color='primary'>View Sales</Button>
-        <img className='congratulation-medal' src={medal} alt='Medal Pic' />
+        <img className='congratulation-medal' src={medal} width={222} alt='Medal Pic' />
       </CardBody>
     </Card>
   )

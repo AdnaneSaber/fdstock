@@ -92,7 +92,7 @@ export default [
             id: 'welcomeTemp',
             title: 'Welcome',
             permissions: ['admin', 'editor'],
-            navLink: 'https://pixinvent.com/demo/vuexy-mail-template/mail-welcome.html',
+            navLink: 'https://futurdigital.com/demo/vuexy-mail-template/mail-welcome.html',
             newTab: true,
             externalLink: true
           },
@@ -100,7 +100,7 @@ export default [
             id: 'resetPassTemp',
             title: 'Reset Password',
             permissions: ['admin', 'editor'],
-            navLink: 'https://pixinvent.com/demo/vuexy-mail-template/mail-reset-password.html',
+            navLink: 'https://futurdigital.com/demo/vuexy-mail-template/mail-reset-password.html',
             newTab: true,
             externalLink: true
           },
@@ -108,7 +108,7 @@ export default [
             id: 'verifyEmailTemp',
             title: 'Verify Email',
             permissions: ['admin', 'editor'],
-            navLink: 'https://pixinvent.com/demo/vuexy-mail-template/mail-verify-email.html',
+            navLink: 'https://futurdigital.com/demo/vuexy-mail-template/mail-verify-email.html',
             newTab: true,
             externalLink: true
           },
@@ -116,7 +116,7 @@ export default [
             id: 'deactivateAccountTemp',
             title: 'Deactivate Account',
             permissions: ['admin', 'editor'],
-            navLink: 'https://pixinvent.com/demo/vuexy-mail-template/mail-deactivate-account.html',
+            navLink: 'https://futurdigital.com/demo/vuexy-mail-template/mail-deactivate-account.html',
             newTab: true,
             externalLink: true
           },
@@ -124,7 +124,7 @@ export default [
             id: 'invoiceMailTemp',
             title: 'Invoice',
             permissions: ['admin', 'editor'],
-            navLink: 'https://pixinvent.com/demo/vuexy-mail-template/mail-invoice.html',
+            navLink: 'https://futurdigital.com/demo/vuexy-mail-template/mail-invoice.html',
             newTab: true,
             externalLink: true
           },
@@ -132,7 +132,7 @@ export default [
             id: 'promotionalMailTemp',
             title: 'Promotional',
             permissions: ['admin', 'editor'],
-            navLink: 'https://pixinvent.com/demo/vuexy-mail-template/mail-promotional.html',
+            navLink: 'https://futurdigital.com/demo/vuexy-mail-template/mail-promotional.html',
             newTab: true,
             externalLink: true
           }

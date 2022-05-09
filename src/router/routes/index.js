@@ -10,10 +10,10 @@ import ExtensionsRoutes from './Extensions'
 import PageLayoutsRoutes from './PageLayouts'
 
 // ** Document title
-const TemplateTitle = '%s - Vuexy React Admin Template'
+const TemplateTitle = "%s - FD Stock Banque d'image Futur Digital"
 
 // ** Default Route
-const DefaultRoute = '/dashboard/ecommerce'
+const DefaultRoute = '/dashboard/'
 
 // ** Merge Routes
 const Routes = [

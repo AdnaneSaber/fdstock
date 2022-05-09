@@ -162,7 +162,7 @@ const SidebarLeft = props => {
             <div className='header-profile-sidebar'>
               <Avatar className='box-shadow-1 avatar-border' img={userProfile.avatar} status={status} size='xl' />
               <h4 className='chat-user-name'>{userProfile.fullName}</h4>
-              <span className='user-post'>{userProfile.role}</span>
+              <span className='user-post'>{'admin'}</span>
             </div>
           </header>
           <PerfectScrollbar className='profile-sidebar-area' options={{ wheelPropagation: false }}>

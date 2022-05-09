@@ -12,7 +12,10 @@ const AutoCompleteAjax = () => {
   const [suggestions, setSuggestions] = useState([])
 
   useEffect(() => {
-    axios.get('/api/autocomplete/data').then(response => setSuggestions(response.data.autoComplete))
+    axios.get('/api/autocomplete/data').then(response => {
+      setSuggestions(response.data.autoComplete)
+      console.log(response.data.autoComplete)
+    })
   }, [])
 
   return suggestions.length ? (

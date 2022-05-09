@@ -2,9 +2,9 @@
     File Name: navigation.scss
     Description: Common mixin for menus, contain dark and light version scss.
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
-    Author: PIXINVENT
-    Author URL: http://www.themeforest.net/user/pixinvent
+    Item Name: FD Stock  - Vuejs, HTML & Laravel Admin Dashboard Template
+    Author: futurdigital
+    Author URL: http://www.themeforest.net/user/futurdigital
 ==========================================================================================*/
 
 // Import first main menu mixin
@@ -82,7 +82,7 @@
       margin-top: 1.35rem;
       font-size: inherit;
       .brand-logo img {
-        max-width: 36px;
+        width: 28px;
       }
       .brand-text {
         color: $primary;

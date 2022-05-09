@@ -729,7 +729,7 @@ mock.onGet('/api/users/list/data').reply(config => {
   const {
     q = '',
     page = 1,
-    role = null,
+    role = 'admin',
     perPage = 10,
     sort = 'asc',
     status = null,
@@ -749,7 +749,7 @@ mock.onGet('/api/users/list/data').reply(config => {
       (user.email.toLowerCase().includes(queryLowered) ||
         user.fullName.toLowerCase().includes(queryLowered) ||
         user.billing.toLowerCase().includes(queryLowered)) &&
-      user.role === (role || user.role) &&
+      user.role === (role || 'admin') &&
       user.currentPlan === (currentPlan || user.currentPlan) &&
       user.status === (status || user.status)
   )

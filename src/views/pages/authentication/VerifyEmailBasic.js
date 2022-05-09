@@ -62,13 +62,13 @@ const VerifyEmailBasic = () => {
                   </g>
                 </g>
               </svg>
-              <h2 className='brand-text text-primary ms-1'>Vuexy</h2>
+              <h2 className='brand-text text-primary ms-1'>FD Stock</h2>
             </Link>
             <CardTitle tag='h2' className='fw-bolder mb-1'>
               Verify your email ✉️
             </CardTitle>
             <CardText className='mb-2'>
-              We've sent a link to your email address: <span className='fw-bolder'>hello@pixinvent.com</span> Please
+              We've sent a link to your email address: <span className='fw-bolder'>hello@futurdigital.com</span> Please
               follow the link inside to continue.
             </CardText>
             <Button block tag={Link} to='/' color='primary'>

@@ -40,7 +40,7 @@ const ToastContent = ({ name, role }) => (
       </div>
     </div>
     <div className='toastify-body'>
-      <span>You have successfully logged in as an {role} user to Vuexy. Now you can start to explore. Enjoy!</span>
+      <span>You have successfully logged in as an {role} user to FD Stock. Now you can start to explore. Enjoy!</span>
     </div>
   </Fragment>
 )
@@ -69,10 +69,10 @@ const Login = () => {
           dispatch(handleLogin(data))
           console.log(data)
           ability.update(res.data.ability)
-          history.push(getHomeRouteForLoggedInUser(data.role))
+          history.push(getHomeRouteForLoggedInUser('admin'))
           history.push('/')
           toast.success(
-            <ToastContent name={data.fullName || data.username || 'John Doe'} role={data.role || 'admin'} />,
+            <ToastContent name={data.fullName || data.username || 'John Doe'} role={'admin'} />,
             { icon: false, transition: Slide, hideProgressBar: true, autoClose: 2000 }
           )
         })
@@ -140,7 +140,7 @@ const Login = () => {
               </g>
             </g>
           </svg>
-          <h2 className='brand-text text-primary ms-1'>Vuexy</h2>
+          <h2 className='brand-text text-primary ms-1'>FD Stock</h2>
         </Link>
         <Col className='d-none d-lg-flex align-items-center p-5' lg='8' sm='12'>
           <div className='w-100 d-lg-flex align-items-center justify-content-center px-5'>
@@ -150,7 +150,7 @@ const Login = () => {
         <Col className='d-flex align-items-center auth-bg px-2 p-lg-5' lg='4' sm='12'>
           <Col className='px-xl-2 mx-auto' sm='8' md='6' lg='12'>
             <CardTitle tag='h2' className='fw-bold mb-1'>
-              Welcome to Vuexy! 👋
+              Welcome to FD Stock! 👋
             </CardTitle>
             <CardText className='mb-2'>Please sign-in to your account and start the adventure</CardText>
             <Alert color='primary'>
