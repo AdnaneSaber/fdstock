@@ -6,13 +6,13 @@ const Footer = () => {
     <p className='clearfix mb-0'>
       <span className='float-md-start d-block d-md-inline-block mt-25'>
         COPYRIGHT © {new Date().getFullYear()}{' '}
-        <a href='https://1.envato.market/futurdigital_portfolio' target='_blank' rel='noopener noreferrer'>
-          futurdigital
+        <a href='https://futurdigital.fr/' target='_blank' rel='noopener noreferrer'>
+          Futur digital
         </a>
         <span className='d-none d-sm-inline-block'>, All rights Reserved</span>
       </span>
       <span className='float-md-end d-none d-md-block'>
-        Hand-crafted & Made with
+        Fabriqué à la main & Fait avec
         <Heart size={14} />
       </span>
     </p>

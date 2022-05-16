@@ -1,5 +1,5 @@
 // ** Icons Import
-import { Image, MessageSquare, CheckSquare, Calendar, FileText, Circle, ShoppingCart, User, Shield } from 'react-feather'
+import { Image, MessageSquare, CheckSquare, Calendar, FileText, Circle, ShoppingCart, User, Shield, Upload, Eye } from 'react-feather'
 
 export default [
   {
@@ -16,6 +16,18 @@ export default [
     title: 'Galerie',
     icon: <Image size={20} />,
     navLink: '/apps/gallery'
+  },
+  {
+    id: 'upload',
+    title: 'Upload',
+    icon: <Upload size={20} />,
+    navLink: '/apps/upload'
+  },
+  {
+    id: 'icons',
+    title: 'Icons',
+    icon: <Eye size={20} />,
+    navLink: '/apps/icons'
   }
   // {
   //   id: 'chat',

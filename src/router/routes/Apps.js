@@ -23,6 +23,20 @@ const AppRoutes = [
     appLayout: false,
     className: 'gallery-image',
     component: lazy(() => import('../../views/apps/gallery/image'))
+  },
+  {
+    path: '/apps/icons',
+    exact: true,
+    appLayout: false,
+    className: 'gallery-icons',
+    component: lazy(() => import('../../views/apps/icons'))
+  },
+  {
+    path: '/apps/upload',
+    exact: true,
+    appLayout: true,
+    className: 'upload-image',
+    component: lazy(() => import('../../views/apps/upload'))
   }
   // {
   //   path: '/apps/email/:folder',

@@ -113,29 +113,30 @@ const CompanyTable = () => {
 
     const icons = [
       {
-        subtitle: 'Couverture',
+        subtitle: ['Couverture', 'Toit', 'Charpente'],
         color: 'light-danger',
         icon: <Map size={16} />
       },
       {
-        subtitle: 'Plomberie',
+        subtitle: ['Plomberie', 'Plombier', 'Eau', 'Robinet', 'Douche', 'Toilette'],
         color: 'light-info',
         icon: <Tool size={16} />
       },
       {
-        subtitle: 'Énergie',
+        subtitle: ['Énergie', 'Solaire', 'Gaz'],
         color: 'light-success',
         icon: <Zap size={16} />
       },
       {
-        subtitle: 'Déménagement',
+        subtitle: ['Déménagement', 'Nouveau', 'Carton'],
         color: 'light-warning',
         icon: <Package size={16} />
       }
     ]
     let out = []
     icons.forEach(icon => {
-      if (exifs.split(", ").indexOf(icon.subtitle.toLowerCase()) !== -1) {
+      icon.subtitle = icon.subtitle.map(t => t.toLowerCase())
+      if (exifs.some(item => icon.subtitle.includes(item))) {
         out = [icon.icon, icon.color]
       }
     })
@@ -144,8 +145,8 @@ const CompanyTable = () => {
   const renderData = () => {
     if (stats.length > 0) {
       return stats.map(col => {
-        const exifs = col.image.exif.toString().split(", ").slice(0, 4)
-        const [icon, color] = getIcon(col.image.exif)
+        const exifs = col.image.exif ? col.image.exif.toString().split(", ").slice(0, 4) : []
+        const [icon, color] = getIcon(col.image.exif.toString().trim().split(", "))
 
         return (
           stats.length > 0 ? <tr key={col.image.id}>
@@ -154,14 +155,15 @@ const CompanyTable = () => {
                 <Link to={`/apps/gallery/image/${col.image.id}`}>
                   <h5 className='text-primary text-bold cursor-pointer'>#{col.image.id}</h5>
                 </Link>
-
               </div>
             </td>
             <td>
               <div className='d-flex align-items-center'>
                 <div className='avatar rounded'>
                   <div className='avatar-content'>
-                    <img src={col.image.thumbnail} className="w-100 h-100" alt={col.image.name} />
+                    <Link to={`/apps/gallery/image/${col.image.id}`} style={{ position: 'absolute', inset: 0 }}>
+                      <img src={col.image.thumbnail} style={{ objectFit: 'cover' }} className='w-100 h-100' alt={col.image.name} />
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -169,12 +171,15 @@ const CompanyTable = () => {
             <td className='text-nowrap'>
               <div className='d-flex align-items-center'>
                 <Avatar className='me-1' color={color} icon={icon} />
-                <span className="text-light-secondary">
-                  {exifs.join(", ")}
-                  <Info size={16} className='mx-1 text-muted cursor-pointer' id={`exif-${col.id}`} />
-                  <UncontrolledTooltip placement='right' target={`exif-${col.id}`}>
-                    {col.image.exif.replace(', ', '\n')}
-                  </UncontrolledTooltip>
+                <span className='text-light-secondary'>
+                  {exifs.join("").replace(' ', '').length >= 1 ? <>
+                    {exifs.join(", ")}
+                    <Info size={16} className='mx-1 text-muted cursor-pointer' id={`exif-${col.image.id}`} />
+                    <UncontrolledTooltip placement='right' target={`exif-${col.image.id}`}>
+                      {col.image.exif.replace(', ', '\n')}
+                    </UncontrolledTooltip>
+                  </> : "..."
+                  }
                 </span>
               </div>
             </td>

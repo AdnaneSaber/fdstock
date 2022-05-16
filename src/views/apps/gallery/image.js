@@ -1,19 +1,8 @@
-/* eslint-disable no-unused-vars */
 import axios from 'axios'
 import { useState, useEffect, Fragment } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Breadcrumbs from '@components/breadcrumbs'
-import classnames from 'classnames'
 import {
-    Share2,
-    GitHub,
-    Gitlab,
-    Twitter,
-    Bookmark,
-    Facebook,
-    Linkedin,
-    CornerUpLeft,
-    MessageSquare,
     Download,
     Eye,
     Link2,
@@ -30,19 +19,9 @@ import {
     Row,
     Col,
     Card,
-    Form,
-    Badge,
-    Input,
-    Label,
-    Button,
     CardImg,
     CardBody,
-    CardText,
-    CardTitle,
-    DropdownMenu,
-    DropdownItem,
-    DropdownToggle,
-    UncontrolledDropdown
+    CardTitle
 } from 'reactstrap'
 
 // ** Styles
@@ -151,7 +130,7 @@ const ImagePage = () => {
                                         </a>
                                     </div>
                                 </div>
-                                <CopyToClipboard onCopy={onCopy} text={image.compressed}>
+                                <CopyToClipboard onCopy={onCopy} text={`${window.location.origin}/apps/gallery/image/${image.id}`}>
                                     <Link2 size={24} className={`cursor-pointer me-1 ${copied ? 'text-success' : ''}`} />
                                 </CopyToClipboard>
                             </div>
