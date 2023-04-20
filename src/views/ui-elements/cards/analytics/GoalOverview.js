@@ -6,7 +6,6 @@ import axios from 'axios'
 import Chart from 'react-apexcharts'
 import { HelpCircle } from 'react-feather'
 
-import { percentage } from '@utils'
 // ** Reactstrap Imports
 import { Card, CardHeader, CardTitle, CardBody, CardText, Row, Col, UncontrolledTooltip } from 'reactstrap'
 
@@ -15,7 +14,7 @@ const GoalOverview = props => {
   const [data, setData] = useState(null)
 
   useEffect(() => {
-    axios.get(process.env.REACT_APP_API, { params: { disk: true } }).then(res => setData(res.data))
+    axios.get(process.env.REACT_APP_API_DISK).then(res => setData(res.data))
     return () => setData(null)
   }, [])
   const options = {
@@ -79,7 +78,7 @@ const GoalOverview = props => {
       }
     }
   },
-    series = data !== null ? [percentage(data.used[1], data.total[1], 0)] : 83
+    series = data !== null ? [data.percentage] : 83
 
   return data !== null ? (
     <Card>
@@ -96,11 +95,11 @@ const GoalOverview = props => {
       <Row className='border-top text-center mx-0'>
         <Col xs='6' className='border-end py-1'>
           <CardText className='text-muted mb-0'>Utilisé</CardText>
-          <h3 className='fw-bolder mb-0'>{data.used[0]}</h3>
+          <h3 className='fw-bolder mb-0'>{data.used}</h3>
         </Col>
         <Col xs='6' className='py-1'>
           <CardText className='text-muted mb-0'>Libre</CardText>
-          <h3 className='fw-bolder mb-0'>{data.left[0]}</h3>
+          <h3 className='fw-bolder mb-0'>{data.free}</h3>
         </Col>
       </Row>
     </Card>

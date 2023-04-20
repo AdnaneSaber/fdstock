@@ -145,6 +145,7 @@ const CompanyTable = () => {
   const renderData = () => {
     if (stats.length > 0) {
       return stats.map(col => {
+        console.log(col)
         const exifs = col.image.exif ? col.image.exif.toString().split(", ").slice(0, 4) : []
         const [icon, color] = getIcon(col.image.exif.toString().trim().split(", "))
 

@@ -9,7 +9,7 @@ import { kFormatter } from '@utils'
 const CardMedal = () => {
   const [count, setCount] = useState(0)
   useEffect(() => {
-    axios.get(process.env.REACT_APP_API, { params: { count: true, gallery: true } }).then(res => res.data && setCount(res.data.count))
+    axios.get(process.env.REACT_APP_API_COUNT).then(res => res.data && setCount(res.data.count))
   }, [count])
 
   return (
