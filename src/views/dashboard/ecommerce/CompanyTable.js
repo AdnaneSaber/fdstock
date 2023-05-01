@@ -163,7 +163,7 @@ const CompanyTable = () => {
                 <div className='avatar rounded'>
                   <div className='avatar-content'>
                     <Link to={`/apps/gallery/image/${col.image.id}`} style={{ position: 'absolute', inset: 0 }}>
-                      <img src={col.image.thumbnail} style={{ objectFit: 'cover' }} className='w-100 h-100' alt={col.image.name} />
+                      <img src={process.env.REACT_APP_API + col.image.thumbnail} style={{ objectFit: 'cover' }} className='w-100 h-100' alt={col.image.name} />
                     </Link>
                   </div>
                 </div>
