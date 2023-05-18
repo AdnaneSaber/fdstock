@@ -167,7 +167,7 @@ const ImageCard = ({ image, block }) => {
         </div>
         <Card>
             <UILoader blocking={block} loader={<Loader />}>
-                <CardImg top src={image.thumbnail} height={300} style={{ objectFit: "cover" }} alt='Card cap' />
+                <CardImg top src={process.env.REACT_APP_API + image.compressed} height={300} style={{ objectFit: "cover" }} alt='Card cap' />
             </UILoader>
             <CardBody color={copied ? 'success' : 'primary'} className='d-flex align-items-center w-100 justify-content-between'>
                 <div>

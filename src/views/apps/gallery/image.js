@@ -34,30 +34,27 @@ const ImagePage = () => {
     const [image, setImage] = useState(null)
     const paramsURL = useParams()
     const fetchImage = () => {
-        axios.get(process.env.REACT_APP_API, { params: { image: paramsURL.id, gallery: true } }).then((res) => {
-            setImage(res.data)
+        axios.get(`${process.env.REACT_APP_API}images/${paramsURL.id}`, { params: { image: paramsURL.id, gallery: true } }).then((res) => {
+            console.log(res.data)
+            setImage(res.data[0])
         })
     }
-    const addView = (addview) => {
-        const data = new FormData()
-        data.append("addview", addview)
-        axios.post(process.env.REACT_APP_API, data).then(() => {
+    const addView = (id) => {
+        axios.post(`${process.env.REACT_APP_API}images/view/${id}`).then(() => {
             fetchImage()
         })
     }
     
-    const addDownload = (adddownload) => {
-        const data = new FormData()
-        data.append("adddownload", adddownload)
-        axios.post(process.env.REACT_APP_API, data).then(() => {
+    const addDownload = (id) => {
+        axios.post(`${process.env.REACT_APP_API}images/download/${id}`).then(() => {
             fetchImage()
         })
     }
 
-    const downloadImage = async ({ compressed, name, id }) => {
+    const downloadImage = async ({ original, name, id }) => {
         const a = document.createElement("a")
         a.style.display = "none"
-        const response = await fetch(compressed)
+        const response = await fetch(`${process.env.REACT_APP_API}${original}`)
         const blob = await response.blob()
         a.href = URL.createObjectURL(blob)
         a.download = name
@@ -94,7 +91,7 @@ const ImagePage = () => {
             <Row>
                 <Col sm='12'>
                     <Card className='mb-3'>
-                        <CardImg src={image.compressed} className='img-fluid' top />
+                        <CardImg src={process.env.REACT_APP_API + image.original} className='img-fluid' top />
                         <CardBody>
                             <CardTitle tag='h4'>{image.name}</CardTitle>
                             <div className='d-flex'>

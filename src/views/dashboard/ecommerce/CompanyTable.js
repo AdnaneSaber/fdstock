@@ -145,16 +145,15 @@ const CompanyTable = () => {
   const renderData = () => {
     if (stats.length > 0) {
       return stats.map(col => {
-        console.log(col)
-        const exifs = col.image.exif ? col.image.exif.toString().split(", ").slice(0, 4) : []
-        const [icon, color] = getIcon(col.image.exif.toString().trim().split(", "))
+        const exifs = col.exif ? col.exif.toString().split(", ").slice(0, 4) : []
+        const [icon, color] = getIcon(col.exif.toString().trim().split(", "))
 
         return (
-          stats.length > 0 ? <tr key={col.image.id}>
+          stats.length > 0 ? <tr key={col.id}>
             <td>
               <div className='d-flex align-items-center'>
-                <Link to={`/apps/gallery/image/${col.image.id}`}>
-                  <h5 className='text-primary text-bold cursor-pointer'>#{col.image.id}</h5>
+                <Link to={`/apps/gallery/image/${col.id}`}>
+                  <h5 className='text-primary text-bold cursor-pointer'>#{col.id}</h5>
                 </Link>
               </div>
             </td>
@@ -162,8 +161,8 @@ const CompanyTable = () => {
               <div className='d-flex align-items-center'>
                 <div className='avatar rounded'>
                   <div className='avatar-content'>
-                    <Link to={`/apps/gallery/image/${col.image.id}`} style={{ position: 'absolute', inset: 0 }}>
-                      <img src={process.env.REACT_APP_API + col.image.thumbnail} style={{ objectFit: 'cover' }} className='w-100 h-100' alt={col.image.name} />
+                    <Link to={`/apps/gallery/image/${col.id}`} style={{ position: 'absolute', inset: 0 }}>
+                      <img src={process.env.REACT_APP_API + col.thumbnail} style={{ objectFit: 'cover' }} className='w-100 h-100' alt={col.name} />
                     </Link>
                   </div>
                 </div>
@@ -175,9 +174,9 @@ const CompanyTable = () => {
                 <span className='text-light-secondary'>
                   {exifs.join("").replace(' ', '').length >= 1 ? <>
                     {exifs.join(", ")}
-                    <Info size={16} className='mx-1 text-muted cursor-pointer' id={`exif-${col.image.id}`} />
-                    <UncontrolledTooltip placement='right' target={`exif-${col.image.id}`}>
-                      {col.image.exif.replace(', ', '\n')}
+                    <Info size={16} className='mx-1 text-muted cursor-pointer' id={`exif-${col.id}`} />
+                    <UncontrolledTooltip placement='right' target={`exif-${col.id}`}>
+                      {col.exif.replace(', ', '\n')}
                     </UncontrolledTooltip>
                   </> : "..."
                   }
