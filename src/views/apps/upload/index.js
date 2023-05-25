@@ -57,6 +57,7 @@ const Upload = () => {
     const [overDrag, setOverDrag] = useState(false)
     const [success, setSuccess] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [query, setQuery] = useState("")
     const [error, setError] = useState(false)
     const [progress, setProgress] = useState(0)
 
@@ -76,12 +77,13 @@ const Upload = () => {
             }
             // data.append("file", results)
             data.append("uploadImage", true)
+            data.append("exif", query)
             let allow = true
             results.forEach(result => {
                 (ALLOWED_EXTENSIONS.indexOf(result.name.split('.')[result.name.split('.').length - 1]) !== -1) ? (allow = true) : (allow = false)
             })
             if (allow) {
-                await axios.post(process.env.REACT_APP_API, data, {
+                await axios.post(`${process.env.REACT_APP_API}images/upload`, data, {
                     onUploadProgress: (e) => {
                         setProgress(percentage(e.loaded, e.total, 0))
                     }
@@ -126,6 +128,15 @@ const Upload = () => {
             />
             <Row className='import-component'>
                 <Col sm='12'>
+                    <Card>
+                        <CardBody>
+                            <Row>
+                                <Col sm='12'>
+                                    <Input type="text" onChange={e => setQuery(e.target.value)} name="query" placeholder="Keyword for image search separated by comas..." />
+                                </Col>
+                            </Row>
+                        </CardBody>
+                    </Card>
                     <Card>
                         <CardBody>
                             <Row>

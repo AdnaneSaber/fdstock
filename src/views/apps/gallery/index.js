@@ -57,10 +57,10 @@ const GalleryApp = () => {
 
     const fetchResult = async (gallery = true) => {
         setBlock(true)
-        await axios.get(process.env.REACT_APP_API, { params: { gallery, limitstart, limitend: imageperpage, q: query, orderby } }).then(response => {
+        await axios.get(`${process.env.REACT_APP_API}/images/search`, { params: { gallery, limitstart, limitend: imageperpage, q: query, orderby } }).then(response => {
             setImages(response.data)
         })
-        await axios.get(process.env.REACT_APP_API, { params: { count: true, gallery: true, q: query } }).then(response => setCount(response.data.count))
+        await axios.get(`${process.env.REACT_APP_API}/count`, { params: { count: true, gallery: true, q: query } }).then(response => setCount(response.data.count))
         setBlock(false)
     }
     // ** Effect
@@ -135,10 +135,11 @@ const ImageCard = ({ image, block }) => {
     }
 
     const downloadImage = async ({ compressed, name, id }) => {
+        // console.log(compressed)
         try {
             const a = document.createElement("a")
             a.style.display = "none"
-            const response = await fetch(compressed)
+            const response = await fetch(process.env.REACT_APP_API + compressed)
             const blob = await response.blob()
             a.href = URL.createObjectURL(blob)
             a.download = name
