@@ -24,7 +24,7 @@ const CardBrowserState = ({ colors, trackBgColor }) => {
     "Apple Safari": "safari",
     "Internet Explorer": "ie",
     Opera: "opera",
-    Edge: "edge",
+    Edge: "Microsoft Edge",
     Unknown: "unknown"
   }
   const statesArr = [
@@ -75,7 +75,7 @@ const CardBrowserState = ({ colors, trackBgColor }) => {
     },
     {
       avatar: require('@src/assets/images/icons/mozila-firefox.png').default,
-      title: 'Mozila Firefox',
+      title: 'Mozilla Firefox',
       value: '6.1%',
       chart: {
         type: 'radialBar',
@@ -255,7 +255,7 @@ const CardBrowserState = ({ colors, trackBgColor }) => {
     },
     {
       avatar: require('@src/assets/images/icons/edge.png').default,
-      title: 'Edge',
+      title: 'Microsoft Edge',
       value: '10.4%',
       chart: {
         type: 'radialBar',
@@ -345,15 +345,16 @@ const CardBrowserState = ({ colors, trackBgColor }) => {
     }
   ]
   const fetchBrowsers = async () => {
-    const res = await axios.get(process.env.REACT_APP_API, { params: { allviews: true } })
+    const res = await axios.get(`${process.env.REACT_APP_API}/browserstats/`)
     if (res.data !== null) {
+
       setBrowsers(statesArr.map(browser => {
         return {
           ...browser,
-          value: `${percentage(parseInt(res.data[correspondant[browser.title]]), res.data.allviews)}%`,
+          value: `${res.data.filter(e => e.key === browser.title)[0].value * 100}%`,
           chart: {
             ...browser.chart,
-            series: [percentage(parseInt(res.data[correspondant[browser.title]]), res.data.allviews)]
+            series: [percentage(parseInt(res.data[correspondant[browser.title]]), res.data.filter(e => e.key === "count")[0].value)]
           }
         }
       }))
