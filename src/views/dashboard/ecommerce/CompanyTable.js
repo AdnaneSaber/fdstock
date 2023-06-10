@@ -149,7 +149,7 @@ const CompanyTable = () => {
         const [icon, color] = getIcon(col.exif.toString().trim().split(", "))
 
         return (
-          stats.length > 0 ? <tr key={col.id}>
+          stats.length > 0 ? <tr key={col.id} style={{gridTemplateColumns:"repeat(8, minmax(0, 1fr))", display:"grid"}}>
             <td>
               <div className='d-flex align-items-center'>
                 <Link to={`/apps/gallery/image/${col.id}`}>
@@ -168,10 +168,10 @@ const CompanyTable = () => {
                 </div>
               </div>
             </td>
-            <td className='text-nowrap'>
+            <td className='text-nowrap' style={{gridColumn:"span 4 / span 4"}}>
               <div className='d-flex align-items-center'>
                 <Avatar className='me-1' color={color} icon={icon} />
-                <span className='text-light-secondary'>
+                <span className='text-light-secondary' style={{textOverflow: "ellipsis", width: "100%", overflow: "hidden"}}>
                   {exifs.join("").replace(' ', '').length >= 1 ? <>
                     {exifs.join(", ")}
                     <Info size={16} className='mx-1 text-muted cursor-pointer' id={`exif-${col.id}`} />
@@ -198,14 +198,14 @@ const CompanyTable = () => {
 
   return (
     <Card className='card-company-table'>
-      <Table responsive>
+      <Table responsive style={{display:"grid"}}>
         <thead>
-          <tr>
+          <tr style={{gridTemplateColumns:"repeat(8, minmax(0, 1fr))", display:"grid"}}>
             <th>#</th>
             <th>Image</th>
-            <th>Catégorie</th>
+            <th style={{gridColumn:"span 4 / span 4"}}>Catégorie</th>
             <th>Vues</th>
-            <th>Téléchargement</th>
+            <th>Téléchargment</th>
           </tr>
         </thead>
         <tbody>{renderData()}</tbody>

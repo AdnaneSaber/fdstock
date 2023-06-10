@@ -52,15 +52,16 @@ const GalleryApp = () => {
     const [query, setQuery] = useState("")
     const [count, setCount] = useState(0)
     const [limitstart, setLimitstart] = useState(0)
+    const [hasNoFace, setHasNoFace] = useState(false)
     const [orderby, setOrderby] = useState("RAND()")
     // ** Functions
 
     const fetchResult = async (gallery = true) => {
         setBlock(true)
-        await axios.get(`${process.env.REACT_APP_API}/images/search`, { params: { gallery, limitstart, limitend: imageperpage, q: query, orderby } }).then(response => {
+        await axios.get(`${process.env.REACT_APP_API}/images/search`, { params: { gallery, limitstart, hasNoFace, limitend: imageperpage, q: query, orderby } }).then(response => {
             setImages(response.data)
         })
-        await axios.get(`${process.env.REACT_APP_API}/count`, { params: { count: true, gallery: true, q: query } }).then(response => setCount(response.data.count))
+        // await axios.get(`${process.env.REACT_APP_API}count`, { params: { count: true, gallery: true, q: query } }).then(response => setCount(response.data.count))
         setBlock(false)
     }
     // ** Effect
@@ -71,13 +72,17 @@ const GalleryApp = () => {
     useEffect(() => {
         fetchResult()
         setLimitstart(0)
-    }, [query])
+    }, [query, hasNoFace])
     return (
         <Fragment>
             <Row>
                 <Col md="12">
                     <Input value={query} placeholder="Cherchez par mot clé" onChange={e => setQuery(e.target.value)} />
                     <FormText className='text-muted'>Pour multiple mot clé, veuillez les séparer par des virgules.</FormText>
+                </Col>
+                <Col md="12">
+                    <Input value={query} type='checkbox' onChange={e => setHasNoFace(e.target.checked)} />
+                    <FormText className='text-muted'>Exclure les visages</FormText>
                 </Col>
             </Row>
             <Row className='match-height'>
