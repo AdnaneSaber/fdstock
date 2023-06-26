@@ -75,7 +75,7 @@ const Upload = () => {
             for (let i = 0; i < results.length; i++) {
                 data.append(`file${i}`, results[i])
             }
-            // data.append("file", results)
+            data.append("file", results)
             data.append("uploadImage", true)
             data.append("exif", query)
             let allow = true
@@ -83,21 +83,21 @@ const Upload = () => {
                 (ALLOWED_EXTENSIONS.indexOf(result.name.split('.')[result.name.split('.').length - 1]) !== -1) ? (allow = true) : (allow = false)
             })
             if (allow) {
-                await axios.post(`${process.env.REACT_APP_API}images/upload`, data, {
+                const res = await axios.post(`${process.env.REACT_APP_API}images/upload/`, data, {
                     onUploadProgress: (e) => {
                         setProgress(percentage(e.loaded, e.total, 0))
                     }
-                }).then((res) => {
-                    if (res.data === 'success') {
-                        setOverDrag(false)
-                        setSuccess(true)
-                        setTimeout(() => {
-                            setSuccess(false)
-                        }, 2000)
-                    } else {
-                        allow = false
-                    }
                 })
+                console.log(res.data)
+                if (res.status === 200) {
+                    setOverDrag(false)
+                    setSuccess(true)
+                    setTimeout(() => {
+                        setSuccess(false)
+                    }, 2000)
+                } else {
+                    allow = false
+                }
                 setOverDrag(false)
                 setLoading(false)
             }
