@@ -162,7 +162,7 @@ const ImageCard = ({ image, block }) => {
             console.error('Issue saving the image !')
         }
     }
-    return (<Col md='3' sm="6" xs="12" lg='4' className='' key={image.id}>
+    return (<Col md='2' sm="3" xs="6" lg='2' className='' key={image.id}>
         <div className='d-flex align-items-center justify-content-between pe-2'>
             <h6 className='my-2 text-muted galleryCardsHeaderTitle'>{`${image.exif.replace(", ", ",").split(",").slice(0, 4).join(", ")}...`}</h6>
             {image.exif.replace(", ", ",").split(",").length > 4 ? <><HelpCircle size={16} className="text-muted" id={`gallery${image.id}`} />
@@ -173,7 +173,7 @@ const ImageCard = ({ image, block }) => {
         </div>
         <Card>
             <UILoader blocking={block} loader={<Loader />}>
-                <CardImg top src={process.env.REACT_APP_API + image.compressed} height={300} style={{ objectFit: "cover" }} alt='Card cap' />
+                <CardImg top src={process.env.REACT_APP_API + image.compressed} height={128} style={{ objectFit: "cover" }} alt='Card cap' />
             </UILoader>
             <CardBody color={copied ? 'success' : 'primary'} className='d-flex align-items-center w-100 justify-content-between'>
                 <div>
