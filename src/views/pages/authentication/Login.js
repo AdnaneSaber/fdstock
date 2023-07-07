@@ -68,7 +68,7 @@ const Login = () => {
           const data = { ...res.data, accessToken: res.data.access, refreshToken: res.data.refresh }
           dispatch(handleLogin(data))
           console.log(data)
-          ability.update(res.data.ability)
+          ability.update("admin")
           history.push(getHomeRouteForLoggedInUser('admin'))
           history.push('/')
           toast.success(

@@ -1,8 +1,8 @@
 // ** React Imports
-import { Suspense, useContext, lazy, Fragment } from 'react'
+import { Suspense, lazy, Fragment } from 'react'
 
 // ** Utils
-// import { isUserLoggedIn } from '@utils'
+import { isUserLoggedIn } from '@utils'
 import { useLayout } from '@hooks/useLayout'
 import { AbilityContext } from '@src/utility/context/Can'
 import { useRouterTransition } from '@hooks/useRouterTransition'
@@ -25,9 +25,6 @@ const Router = () => {
   // ** Hooks
   const { layout, setLayout, setLastLayout } = useLayout()
   const { transition, setTransition } = useRouterTransition()
-
-  // ** ACL Ability Context
-  const ability = useContext(AbilityContext)
 
   // ** Default Layout
   const DefaultLayout = layout === 'horizontal' ? 'HorizontalLayout' : 'VerticalLayout'
@@ -66,17 +63,11 @@ const Router = () => {
    */
   const FinalRoute = props => {
     const route = props.route
-    let action, resource
 
-    // ** Assign vars based on route meta
-    if (route.meta) {
-      action = route.meta.action ? route.meta.action : null
-      resource = route.meta.resource ? route.meta.resource : null
-    }
 
     if (
-      (!true && route.meta === undefined) ||
-      (!true && route.meta && !route.meta.authRoute && !route.meta.publicRoute)
+      (!isUserLoggedIn() && route.meta === undefined) ||
+      (!isUserLoggedIn() && route.meta && !route.meta.authRoute && !route.meta.publicRoute)
     ) {
       /**
        ** If user is not Logged in & route meta is undefined
@@ -86,12 +77,9 @@ const Router = () => {
        */
 
       return <Redirect to='/login' />
-    } else if (route.meta && route.meta.authRoute && true) {
+    } else if (route.meta && route.meta.authRoute && isUserLoggedIn()) {
       // ** If route has meta and authRole and user is Logged in then redirect user to home page (DefaultRoute)
       return <Redirect to='/' />
-    } else if (true && !ability.can(action || 'read', resource)) {
-      // ** If user is Logged in and doesn't have ability to visit the page redirect the user to Not Authorized
-      return <Redirect to='/misc/not-authorized' />
     } else {
       // ** If none of the above render component
       return <route.component {...props} />
@@ -200,7 +188,7 @@ const Router = () => {
           exact
           path='/'
           render={() => {
-            return <Redirect to={DefaultRoute} />
+            return isUserLoggedIn() ? <Redirect to={DefaultRoute} /> : <Redirect to='/login' />
           }}
         />
         {/* Not Auth Route */}

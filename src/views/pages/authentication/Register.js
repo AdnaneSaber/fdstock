@@ -6,19 +6,16 @@ import { Link, useHistory } from 'react-router-dom'
 import { useSkin } from '@hooks/useSkin'
 import useJwt from '@src/auth/jwt/useJwt'
 
-// ** Store & Actions
-import { useDispatch } from 'react-redux'
-import { handleLogin } from '@store/authentication'
-
 // ** Third Party Components
 import { useForm, Controller } from 'react-hook-form'
-import { Facebook, Twitter, Mail, GitHub } from 'react-feather'
+import { Facebook, Twitter, Mail, GitHub, Check } from 'react-feather'
 
 // ** Context
 import { AbilityContext } from '@src/utility/context/Can'
 
 // ** Custom Components
 import InputPasswordToggle from '@components/input-password-toggle'
+import Avatar from '@components/avatar'
 
 // ** Reactstrap Imports
 import { Row, Col, CardTitle, CardText, Label, Button, Form, Input, FormFeedback } from 'reactstrap'
@@ -26,6 +23,7 @@ import { Row, Col, CardTitle, CardText, Label, Button, Form, Input, FormFeedback
 // ** Styles
 import '@styles/react/pages/page-authentication.scss'
 
+import { toast } from 'react-toastify'
 const defaultValues = {
   email: '',
   terms: false,
@@ -39,7 +37,6 @@ const Register = () => {
   const ability = useContext(AbilityContext)
   const { skin } = useSkin()
   const history = useHistory()
-  const dispatch = useDispatch()
   const {
     control,
     setError,
@@ -49,7 +46,17 @@ const Register = () => {
 
   const illustration = skin === 'dark' ? 'register-v2-dark.svg' : 'register-v2.svg',
     source = require(`@src/assets/images/pages/${illustration}`).default
-
+    const ToastSuccess = () => (
+      <>
+          <div className='toastify-header pb-0'>
+              <div className='title-wrapper'>
+                  <Avatar size='sm' color='success' icon={<Check />} />
+                  <h4 className='toast-title'>Votre compte est créé.</h4>
+                  <h6 className='toast-title'>Connectez-vous!</h6>
+              </div>
+          </div>
+      </>
+  )
   const onSubmit = data => {
     const tempData = { ...data }
     delete tempData.terms
@@ -68,10 +75,15 @@ const Register = () => {
               }
             }
           } else {
-            const data = { ...res.data.user, accessToken: res.data.accessToken }
-            ability.update(res.data.user.ability)
-            dispatch(handleLogin(data))
-            history.push('/')
+            ability.update(res.data.ability)
+            toast.success(<ToastSuccess />, {
+                icon: false,
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeButton: false
+            })
+            history.push('/login')
+            
           }
         })
         .catch(err => console.log(err))
