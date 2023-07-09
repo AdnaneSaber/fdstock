@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // ** React Imports
 import { Fragment, useState } from 'react'
 
@@ -7,7 +8,7 @@ import Avatar from '@components/avatar'
 // ** Third Party Components
 import { toast } from 'react-toastify'
 import Flatpickr from 'react-flatpickr'
-import { X, Check } from 'react-feather'
+import { X, Check, Trash } from 'react-feather'
 import Select, { components } from 'react-select'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import { useForm, Controller } from 'react-hook-form'
@@ -19,12 +20,12 @@ import { Button, Modal, ModalHeader, ModalBody, Label, Input, Form } from 'react
 import { selectThemeColors, isObjEmpty } from '@utils'
 
 // ** Avatar Images
-import img1 from '@src/assets/images/avatars/1-small.png'
-import img2 from '@src/assets/images/avatars/3-small.png'
-import img3 from '@src/assets/images/avatars/5-small.png'
-import img4 from '@src/assets/images/avatars/7-small.png'
-import img5 from '@src/assets/images/avatars/9-small.png'
-import img6 from '@src/assets/images/avatars/11-small.png'
+// import img1 from '@src/assets/images/avatars/1-small.png'
+// import img2 from '@src/assets/images/avatars/3-small.png'
+// import img3 from '@src/assets/images/avatars/5-small.png'
+// import img4 from '@src/assets/images/avatars/7-small.png'
+// import img5 from '@src/assets/images/avatars/9-small.png'
+// import img6 from '@src/assets/images/avatars/11-small.png'
 
 // ** Styles Imports
 import '@styles/react/libs/react-select/_react-select.scss'
@@ -90,14 +91,14 @@ const AddEventSidebar = props => {
     { value: 'ETC', label: 'ETC', color: 'info' }
   ]
 
-  const guestsOptions = [
-    { value: 'Donna Frank', label: 'Donna Frank', avatar: img1 },
-    { value: 'Jane Foster', label: 'Jane Foster', avatar: img2 },
-    { value: 'Gabrielle Robertson', label: 'Gabrielle Robertson', avatar: img3 },
-    { value: 'Lori Spears', label: 'Lori Spears', avatar: img4 },
-    { value: 'Sandy Vega', label: 'Sandy Vega', avatar: img5 },
-    { value: 'Cheryl May', label: 'Cheryl May', avatar: img6 }
-  ]
+  // const guestsOptions = [
+  //   { value: 'Donna Frank', label: 'Donna Frank', avatar: img1 },
+  //   { value: 'Jane Foster', label: 'Jane Foster', avatar: img2 },
+  //   { value: 'Gabrielle Robertson', label: 'Gabrielle Robertson', avatar: img3 },
+  //   { value: 'Lori Spears', label: 'Lori Spears', avatar: img4 },
+  //   { value: 'Sandy Vega', label: 'Sandy Vega', avatar: img5 },
+  //   { value: 'Cheryl May', label: 'Cheryl May', avatar: img6 }
+  // ]
 
   // ** Custom select components
   const OptionComponent = ({ data, ...props }) => {
@@ -257,6 +258,7 @@ const AddEventSidebar = props => {
   }
 
   const handleDeleteEvent = () => {
+    console.log(selectedEvent)
     dispatch(removeEvent(selectedEvent.id))
     removeEventInCalendar(selectedEvent.id)
     handleAddEventSidebar()
@@ -429,7 +431,7 @@ const AddEventSidebar = props => {
               />
             </div>
 
-            <div className='mb-1'>
+            {/* <div className='mb-1'>
               <Label className='form-label' for='guests'>
                 Guests
               </Label>
@@ -447,7 +449,7 @@ const AddEventSidebar = props => {
                   Option: GuestsComponent
                 }}
               />
-            </div>
+            </div> */}
 
             <div className='mb-1'>
               <Label className='form-label' for='location'>

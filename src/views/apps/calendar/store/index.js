@@ -4,24 +4,26 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 // ** Axios Imports
 import axios from 'axios'
 
+const { user_id } = JSON.parse(localStorage.getItem('userData'))
 export const fetchEvents = createAsyncThunk('appCalendar/fetchEvents', async calendars => {
-  const response = await axios.get('/apps/calendar/events', { calendars })
+  const response = await axios.post(`${process.env.REACT_APP_API}calendar/events/user/${user_id}`, { calendars })
   return response.data
 })
 
 export const addEvent = createAsyncThunk('appCalendar/addEvent', async (event, { dispatch, getState }) => {
-  await axios.post('/apps/calendar/add-event', { event })
+  await axios.post(`${process.env.REACT_APP_API}calendar/add-event`, { event, user_id })
   await dispatch(fetchEvents(getState().calendar.selectedCalendars))
   return event
 })
 
 export const updateEvent = createAsyncThunk('appCalendar/updateEvent', async (event, { dispatch, getState }) => {
-  await axios.post('/apps/calendar/update-event', { event })
+  await axios.put(`${process.env.REACT_APP_API}calendar/update-event`, { event })
   await dispatch(fetchEvents(getState().calendar.selectedCalendars))
   return event
 })
 
 export const updateFilter = createAsyncThunk('appCalendar/updateFilter', async (filter, { dispatch, getState }) => {
+  console.log(filter)
   if (getState().calendar.selectedCalendars.includes(filter)) {
     await dispatch(fetchEvents(getState().calendar.selectedCalendars.filter(i => i !== filter)))
   } else {
@@ -40,7 +42,7 @@ export const updateAllFilters = createAsyncThunk('appCalendar/updateAllFilters',
 })
 
 export const removeEvent = createAsyncThunk('appCalendar/removeEvent', async id => {
-  await axios.delete('/apps/calendar/remove-event', { id })
+  await axios.delete(`${process.env.REACT_APP_API}calendar/remove-event/${id}`)
   return id
 })
 

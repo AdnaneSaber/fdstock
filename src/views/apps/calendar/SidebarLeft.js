@@ -13,7 +13,7 @@ import illustration from '@src/assets/images/pages/calendar-illustration.png'
 // ** Filters Checkbox Array
 const filters = [
   { label: 'Personal', color: 'danger', className: 'form-check-danger mb-1' },
-  { label: 'Business', color: 'primary', className: 'form-check-primary mb-1' },
+  { label: 'Business', color: 'secondary', className: 'form-check-secondary mb-1' },
   { label: 'Family', color: 'warning', className: 'form-check-warning mb-1' },
   { label: 'Holiday', color: 'success', className: 'form-check-success mb-1' },
   { label: 'ETC', color: 'info', className: 'form-check-info' }

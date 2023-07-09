@@ -22,7 +22,7 @@ import '@styles/react/apps/app-calendar.scss'
 
 // ** CalendarColors
 const calendarsColor = {
-  Business: 'primary',
+  Business: 'secondary',
   Holiday: 'success',
   Personal: 'danger',
   Family: 'warning',
