@@ -78,36 +78,36 @@ const AppRoutes = [
     className: 'chat-application',
     component: lazy(() => import('../../views/apps/chat'))
   },
-  // {
-  //   path: '/apps/todo',
-  //   exact: true,
-  //   appLayout: true,
-  //   className: 'todo-application',
-  //   component: lazy(() => import('../../views/apps/todo'))
-  // },
-  // {
-  //   path: '/apps/todo/:filter',
-  //   appLayout: true,
-  //   exact: true,
-  //   className: 'todo-application',
-  //   component: lazy(() => import('../../views/apps/todo')),
-  //   meta: {
-  //     navLink: '/apps/todo'
-  //   }
-  // },
-  // {
-  //   path: '/apps/todo/tag/:tag',
-  //   appLayout: true,
-  //   className: 'todo-application',
-  //   component: lazy(() => import('../../views/apps/todo')),
-  //   meta: {
-  //     navLink: '/apps/todo'
-  //   }
-  // },
+  {
+    path: '/apps/todo',
+    exact: true,
+    appLayout: true,
+    className: 'todo-application',
+    component: lazy(() => import('../../views/apps/todo'))
+  },
+  {
+    path: '/apps/todo/:filter',
+    appLayout: true,
+    exact: true,
+    className: 'todo-application',
+    component: lazy(() => import('../../views/apps/todo')),
+    meta: {
+      navLink: '/apps/todo'
+    }
+  },
+  {
+    path: '/apps/todo/tag/:tag',
+    appLayout: true,
+    className: 'todo-application',
+    component: lazy(() => import('../../views/apps/todo')),
+    meta: {
+      navLink: '/apps/todo'
+    }
+  },
   {
     path: '/apps/calendar',
     component: lazy(() => import('../../views/apps/calendar'))
-  }
+  },
   // {
   //   path: '/apps/invoice/list',
   //   component: lazy(() => import('../../views/apps/invoice/list'))
@@ -175,22 +175,22 @@ const AppRoutes = [
   //   className: 'ecommerce-application',
   //   component: lazy(() => import('../../views/apps/ecommerce/checkout'))
   // },
-  // {
-  //   path: '/apps/user/list',
-  //   component: lazy(() => import('../../views/apps/user/list'))
-  // },
-  // {
-  //   path: '/apps/user/view',
-  //   exact: true,
-  //   component: () => <Redirect to='/apps/user/view/1' />
-  // },
-  // {
-  //   path: '/apps/user/view/:id',
-  //   component: lazy(() => import('../../views/apps/user/view')),
-  //   meta: {
-  //     navLink: '/apps/user/view'
-  //   }
-  // },
+  {
+    path: '/apps/user/list',
+    component: lazy(() => import('../../views/apps/user/list'))
+  },
+  {
+    path: '/apps/user/view',
+    exact: true,
+    component: () => <Redirect to='/apps/user/view/1' />
+  },
+  {
+    path: '/apps/user/view/:id',
+    component: lazy(() => import('../../views/apps/user/view')),
+    meta: {
+      navLink: '/apps/user/view'
+    }
+  }
   // {
   //   path: '/apps/roles',
   //   component: lazy(() => import('../../views/apps/roles-permissions/roles'))

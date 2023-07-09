@@ -35,18 +35,18 @@ export default [
     icon: <MessageSquare size={20} />,
     navLink: '/apps/chat'
   },
-  // {
-  //   id: 'todo',
-  //   title: 'Todo',
-  //   icon: <CheckSquare size={20} />,
-  //   navLink: '/apps/todo'
-  // },
+  {
+    id: 'todo',
+    title: 'Todo',
+    icon: <CheckSquare size={20} />,
+    navLink: '/apps/todo'
+  },
   {
     id: 'calendar',
     title: 'Calendar',
     icon: <Calendar size={20} />,
     navLink: '/apps/calendar'
-  }
+  },
   // {
   //   id: 'invoiceApp',
   //   title: 'Invoice',
@@ -129,23 +129,23 @@ export default [
   //     }
   //   ]
   // },
-  // {
-  //   id: 'users',
-  //   title: 'User',
-  //   icon: <User size={20} />,
-  //   children: [
-  //     {
-  //       id: 'list',
-  //       title: 'List',
-  //       icon: <Circle size={12} />,
-  //       navLink: '/apps/user/list'
-  //     },
-  //     {
-  //       id: 'view',
-  //       title: 'View',
-  //       icon: <Circle size={12} />,
-  //       navLink: '/apps/user/view'
-  //     }
-  //   ]
-  // }
+  {
+    id: 'users',
+    title: 'User',
+    icon: <User size={20} />,
+    children: [
+      {
+        id: 'list',
+        title: 'List',
+        icon: <Circle size={12} />,
+        navLink: '/apps/user/list'
+      },
+      {
+        id: 'view',
+        title: 'View',
+        icon: <Circle size={12} />,
+        navLink: '/apps/user/view'
+      }
+    ]
+  }
 ]
