@@ -52,7 +52,7 @@ const GalleryApp = () => {
     const [query, setQuery] = useState("")
     const [count, setCount] = useState(0)
     const [limitstart, setLimitstart] = useState(0)
-    const [hasNoFace, setHasNoFace] = useState(false)
+    const [hasNoFace, setHasNoFace] = useState(null)
     const [orderby, setOrderby] = useState("RAND()")
     // ** Functions
 
@@ -76,14 +76,19 @@ const GalleryApp = () => {
     return (
         <Fragment>
             <Row>
-                <Col md="12">
+                <Col md="4">
+                    <Input type='select' onChange={e => setHasNoFace(e.target.value)}>
+                        <option value='null'>Toutes les images</option>
+                        <option value='true'>Exclure les visages</option>
+                        <option value='false'>Inclure les visages</option>
+                    </Input>
+                    <FormText className='text-muted'>Filtre avec l'IA si les images contiennent un visage humain.</FormText>
+                </Col>
+                <Col md="8">
                     <Input value={query} placeholder="Cherchez par mot clé" onChange={e => setQuery(e.target.value)} />
                     <FormText className='text-muted'>Pour multiple mot clé, veuillez les séparer par des virgules.</FormText>
                 </Col>
-                <Col md="12">
-                    <Input value={query} type='checkbox' onChange={e => setHasNoFace(e.target.checked)} />
-                    <FormText className='text-muted'>Exclure les visages</FormText>
-                </Col>
+                
             </Row>
             <Row className='match-height'>
                 {images.map(image => <ImageCard image={image} key={image.id} block={block} />)
