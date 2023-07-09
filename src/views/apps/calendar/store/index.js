@@ -4,7 +4,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 // ** Axios Imports
 import axios from 'axios'
 
-const { user_id } = JSON.parse(localStorage.getItem('userData'))
+const userdata = localStorage.getItem('userData')
+const { user_id } = userdata ? JSON.parse(userdata) : { user_id: null }
 export const fetchEvents = createAsyncThunk('appCalendar/fetchEvents', async calendars => {
   const response = await axios.post(`${process.env.REACT_APP_API}calendar/events/user/${user_id}`, { calendars })
   return response.data

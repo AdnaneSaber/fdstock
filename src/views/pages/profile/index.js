@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // ** React Imports
 import { Fragment, useState, useEffect } from 'react'
 
@@ -23,6 +24,11 @@ import ProfileFriendsSuggestions from './ProfileFriendsSuggestions'
 
 // ** Styles
 import '@styles/react/pages/page-profile.scss'
+import { PieChart } from 'recharts'
+import SimplePieChart from '../../charts/recharts/PieChart'
+// ** Styles
+import '@styles/react/libs/flatpickr/flatpickr.scss'
+import '@styles/react/libs/charts/recharts.scss'
 
 const Profile = () => {
   // ** States
@@ -35,7 +41,13 @@ const Profile = () => {
       setBlock(false)
     }, 2000)
   }
-
+  const donut = {
+    series1: '#ffe700',
+    series2: '#00d4bd',
+    series3: '#826bf8',
+    series4: '#2b9bf4',
+    series5: '#FFA1A1'
+  }
   useEffect(() => {
     axios.get('/profile/data').then(response => setData(response.data))
   }, [])
@@ -53,19 +65,20 @@ const Profile = () => {
             <Row>
               <Col lg={{ size: 3, order: 1 }} sm={{ size: 12 }} xs={{ order: 2 }}>
                 <ProfileAbout data={data.userAbout} />
-                <ProfileSuggestedPages data={data.suggestedPages} />
-                <ProfileTwitterFeeds data={data.twitterFeeds} />
+                {/* <ProfileSuggestedPages data={data.suggestedPages} />
+                <ProfileTwitterFeeds data={data.twitterFeeds} /> */}
               </Col>
-              <Col lg={{ size: 6, order: 2 }} sm={{ size: 12 }} xs={{ order: 1 }}>
-                <ProfilePosts data={data.post} />
+              <Col lg={{ size: 9, order: 2 }} sm={{ size: 12 }} xs={{ order: 1 }}>
+                {/* <ProfilePosts data={data.post} /> */}
+                <SimplePieChart series1={donut.series1} series2={donut.series2} series3={donut.series3} series5={donut.series5} />
               </Col>
               <Col lg={{ size: 3, order: 3 }} sm={{ size: 12 }} xs={{ order: 3 }}>
-                <ProfileLatestPhotos data={data.latestPhotos} />
-                <ProfileFriendsSuggestions data={data.suggestions} />
-                <ProfilePoll data={data.polls} />
+                {/* <ProfileLatestPhotos data={data.latestPhotos} /> */}
+                {/* <ProfileFriendsSuggestions data={data.suggestions} />
+                <ProfilePoll data={data.polls} /> */}
               </Col>
             </Row>
-            <Row>
+            {/* <Row>
               <Col className='text-center' sm='12'>
                 <Button color='primary' className='border-0 mb-1 profile-load-more' size='sm' onClick={handleBlock}>
                   <UILoader blocking={block} overlayColor='rgba(255,255,255, .5)'>
@@ -73,7 +86,7 @@ const Profile = () => {
                   </UILoader>
                 </Button>
               </Col>
-            </Row>
+            </Row> */}
           </section>
         </div>
       ) : null}

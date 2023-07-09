@@ -37,13 +37,13 @@ export default [
   },
   {
     id: 'todo',
-    title: 'Todo',
+    title: 'Tâches',
     icon: <CheckSquare size={20} />,
     navLink: '/apps/todo'
   },
   {
     id: 'calendar',
-    title: 'Calendar',
+    title: 'Calendrier',
     icon: <Calendar size={20} />,
     navLink: '/apps/calendar'
   },

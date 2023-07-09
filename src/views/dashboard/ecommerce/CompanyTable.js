@@ -198,7 +198,7 @@ const CompanyTable = () => {
 
   return (
     <Card className='card-company-table'>
-      <Table responsive style={{display:"grid"}}>
+      <Table responsive style={{display:"grid", maxHeight:"100vh"}}>
         <thead>
           <tr style={{gridTemplateColumns:"repeat(8, minmax(0, 1fr))", display:"grid"}}>
             <th>#</th>

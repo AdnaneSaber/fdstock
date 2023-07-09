@@ -7,10 +7,10 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
 const SimplePieChart = props => {
   // ** Chart Data
   const data = [
-    { name: 'R&D', value: 50, color: props.series2 },
-    { name: 'Operational', value: 85, color: props.series1 },
-    { name: 'Networking', value: 16, color: props.series5 },
-    { name: 'Hiring', value: 50, color: props.series3 }
+    { name: 'Tâches réalisées', value: 50, color: props.series2 },
+    { name: 'Tâches en cours', value: 85, color: props.series1 },
+    { name: 'Tâches non réalisées', value: 16, color: props.series5 },
+    { name: 'Tâches annulées', value: 50, color: props.series3 }
   ]
   /*eslint-disable */
   const RADIAN = Math.PI / 180
@@ -36,8 +36,8 @@ const SimplePieChart = props => {
     <Card>
       <CardHeader>
         <div>
-          <CardTitle tag='h4'>Expense Ratio</CardTitle>
-          <small className='text-muted'>Spending on various categories</small>
+          <CardTitle tag='h4'>Rapport des tâches</CardTitle>
+          <small className='text-muted'>Le mois dernier</small>
         </div>
       </CardHeader>
 
@@ -56,19 +56,19 @@ const SimplePieChart = props => {
         <div className='d-flex align-items-center justify-content-center flex-wrap'>
           <div className='me-2'>
             <span className='bullet bullet-sm bullet-bordered me-50' style={{ backgroundColor: '#ffe700' }}></span>
-            <span className='align-middle me-75'>Operational</span>
+            <span className='align-middle me-75'>Tâches en cours</span>
           </div>
           <div className='me-2'>
             <span className='bullet bullet-sm bullet-bordered me-50' style={{ backgroundColor: '#ffa1a1' }}></span>
-            <span className='align-middle me-75'>Networking</span>
+            <span className='align-middle me-75'>Tâches non réalisées</span>
           </div>
           <div className='me-2'>
             <span className='bullet bullet-sm bullet-primary bullet-bordered me-50'></span>
-            <span className='align-middle me-75'>Hiring</span>
+            <span className='align-middle me-75'>Tâches annulées</span>
           </div>
           <div>
             <span className='bullet bullet-sm bullet-bordered me-50' style={{ backgroundColor: '#00d4bd' }}></span>
-            <span className='align-middle me-75'>R&amp;D</span>
+            <span className='align-middle me-75'>Tâches réalisées</span>
           </div>
         </div>
       </CardBody>
