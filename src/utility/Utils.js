@@ -30,9 +30,6 @@ function getHashCode(str) {
 }
 // ** Returns a color element based on the length of the fullname
 export function getColorBasedOnName(fullname = "") {
-  const names = fullname.split(' ')
-  const initials = names.map(name => name[0].toUpperCase()).join('')
-  const hashCode = getHashCode(initials)
   const elements = [
     'primary',
     'secondary',
@@ -48,8 +45,15 @@ export function getColorBasedOnName(fullname = "") {
     'light-warning',
     'light-dark'
   ]
+  if (fullname) {
+    const names = fullname.split(' ')
+  const initials = names.map(name => name[0].toUpperCase()).join('')
+  const hashCode = getHashCode(initials)
   const index = hashCode % elements.length
   return elements[index]
+  } else {
+    return elements[0]
+  }
 }
 
 

@@ -14,7 +14,7 @@ import { Bell } from 'react-feather'
 import { Button, Badge, DropdownMenu, DropdownItem, DropdownToggle, UncontrolledDropdown } from 'reactstrap'
 import  axios  from 'axios'
 import moment from 'moment/moment'
-import { getInitials, getColorBasedOnName } from '@utils'
+import { getColorBasedOnName } from '@utils'
 const NotificationDropdown = () => {
 
   const [unreadMessages, setUnreadMessages] = useState([])
@@ -44,7 +44,7 @@ const NotificationDropdown = () => {
       }
       return {
           sender: message.sender,
-          avatarContent: getInitials(message.sender.name),
+          avatarContent: message.sender.name,
           color: getColorBasedOnName(message.sender.name),
           subtitle: message.message,
           title: (
