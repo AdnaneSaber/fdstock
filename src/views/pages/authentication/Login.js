@@ -40,7 +40,7 @@ const ToastContent = ({ name, role }) => (
       </div>
     </div>
     <div className='toastify-body'>
-      <span>You have successfully logged in as an {role} user to FD Stock. Now you can start to explore. Enjoy!</span>
+      <span>You have successfully logged in as an {role} user to Futur Lean Digital. Now you can start to explore. Enjoy!</span>
     </div>
   </Fragment>
 )
@@ -140,7 +140,7 @@ const Login = () => {
               </g>
             </g>
           </svg>
-          <h2 className='brand-text text-primary ms-1'>FD Stock</h2>
+          <h2 className='brand-text text-primary ms-1'>Futur Lean Digital</h2>
         </Link>
         <Col className='d-none d-lg-flex align-items-center p-5' lg='8' sm='12'>
           <div className='w-100 d-lg-flex align-items-center justify-content-center px-5'>
@@ -150,7 +150,7 @@ const Login = () => {
         <Col className='d-flex align-items-center auth-bg px-2 p-lg-5' lg='4' sm='12'>
           <Col className='px-xl-2 mx-auto' sm='8' md='6' lg='12'>
             <CardTitle tag='h2' className='fw-bold mb-1'>
-              Welcome to FD Stock! 👋
+              Welcome to Futur Lean Digital! 👋
             </CardTitle>
             <CardText className='mb-2'>Please sign-in to your account and start the adventure</CardText>
             <Alert color='primary'>

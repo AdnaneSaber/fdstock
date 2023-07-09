@@ -92,7 +92,7 @@ const ReferEarnModal = () => {
             <Row tag='form' className='g-1' onSubmit={e => e.preventDefault()}>
               <Col lg='10'>
                 <Label for='friendEmail' className='form-label'>
-                  Enter your friend’s email address and invite them to join FD Stock 😍
+                  Enter your friend’s email address and invite them to join Futur Lean Digital 😍
                 </Label>
                 <Input id='friendEmail' type='email' placeholder='example@domain.com' />
               </Col>

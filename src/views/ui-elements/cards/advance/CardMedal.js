@@ -15,7 +15,7 @@ const CardMedal = () => {
   return (
     <Card className='card-congratulations-medal'>
       <CardBody>
-        <h5>Bienvenue à FD Stock 🎉</h5>
+        <h5>Bienvenue à Futur Lean Digital 🎉</h5>
         <CardText className='font-small-3'>Banque d'image Futur digital</CardText>
         <h3 className='mb-75 mt-3 pt-50'>
           <a href='/' onClick={e => e.preventDefault()}>

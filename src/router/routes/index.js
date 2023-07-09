@@ -10,7 +10,7 @@ import ExtensionsRoutes from './Extensions'
 import PageLayoutsRoutes from './PageLayouts'
 
 // ** Document title
-const TemplateTitle = "%s - FD Stock Banque d'image Futur Digital"
+const TemplateTitle = "%s - Futur Lean Digital Banque d'image Futur Digital"
 
 // ** Default Route
 const DefaultRoute = '/dashboard/'

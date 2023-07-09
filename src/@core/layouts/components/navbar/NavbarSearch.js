@@ -97,7 +97,7 @@ const NavbarSearch = () => {
   //         //   filterKey='title'
   //         //   filterHeaderKey='groupTitle'
   //         //   grouped={true}
-  //         //   placeholder='Explore FD Stock...'
+  //         //   placeholder='Explore Futur Lean Digital...'
   //         //   autoFocus={true}
   //         //   onSuggestionItemClick={handleSuggestionItemClick}
   //         //   externalClick={handleExternalClick}

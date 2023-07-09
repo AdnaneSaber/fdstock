@@ -124,7 +124,7 @@ const Upload = () => {
         <Container fluid>
             <ExtensionsHeader
                 title='Upload'
-                subTitle='Upload des images à FD STOCK en glissant.'
+                subTitle='Upload des images à Futur Lean Digital en glissant.'
             />
             <Row className='import-component'>
                 <Col sm='12'>
