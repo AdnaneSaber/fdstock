@@ -28,25 +28,25 @@ export default [
     title: 'Icons',
     icon: <Eye size={20} />,
     navLink: '/apps/icons'
-  }
-  // {
-  //   id: 'chat',
-  //   title: 'Chat',
-  //   icon: <MessageSquare size={20} />,
-  //   navLink: '/apps/chat'
-  // },
+  },
+  {
+    id: 'chat',
+    title: 'Chat',
+    icon: <MessageSquare size={20} />,
+    navLink: '/apps/chat'
+  },
   // {
   //   id: 'todo',
   //   title: 'Todo',
   //   icon: <CheckSquare size={20} />,
   //   navLink: '/apps/todo'
   // },
-  // {
-  //   id: 'calendar',
-  //   title: 'Calendar',
-  //   icon: <Calendar size={20} />,
-  //   navLink: '/apps/calendar'
-  // },
+  {
+    id: 'calendar',
+    title: 'Calendar',
+    icon: <Calendar size={20} />,
+    navLink: '/apps/calendar'
+  }
   // {
   //   id: 'invoiceApp',
   //   title: 'Invoice',

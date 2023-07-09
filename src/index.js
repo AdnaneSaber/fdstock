@@ -42,6 +42,7 @@ import './assets/scss/style.scss'
 
 // ** Service Worker
 import * as serviceWorker from './serviceWorker'
+import { SocketProvider } from './socket'
 
 // ** Lazy load app
 const LazyApp = lazy(() => import('./App'))
@@ -50,10 +51,12 @@ ReactDOM.render(
   <Provider store={store}>
     <Suspense fallback={<Spinner />}>
       <AbilityContext.Provider value={ability}>
-        <ThemeContext>
-          <LazyApp />
-          <ToastContainer newestOnTop />
-        </ThemeContext>
+        <SocketProvider>
+          <ThemeContext>
+            <LazyApp />
+            <ToastContainer newestOnTop />
+          </ThemeContext>
+        </SocketProvider>
       </AbilityContext.Provider>
     </Suspense>
   </Provider>,

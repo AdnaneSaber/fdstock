@@ -6,6 +6,7 @@ import axios from 'axios'
 
 export const getUserProfile = createAsyncThunk('appChat/getTasks', async () => {
   const response = await axios.get('/apps/chat/users/profile-user')
+  console.log(response.data)
   return response.data
 })
 

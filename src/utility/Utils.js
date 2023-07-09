@@ -4,6 +4,55 @@ export const isObjEmpty = obj => Object.keys(obj).length === 0
 export const percentage = (val, total, fixed = 2) => {
   return ((100 * val) / total).toFixed(fixed)
 }
+// ** Returns the initials of a fullname
+export function getInitials(fullName) {
+  let initials = ''
+  const nameParts = fullName.split(' ')
+  for (let i = 0; i < nameParts.length; i++) {
+    initials += nameParts[i][0].toUpperCase()
+  }
+  return initials
+}
+// ** Returns a random element of a given list
+export function getRandomElement(list) {
+  const randomIndex = Math.floor(Math.random() * list.length)
+  return list[randomIndex]
+}
+function getHashCode(str) {
+  let hash = 0
+  if (str.length === 0) return hash
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i)
+    hash = ((hash << 5) - hash) + char
+    hash |= 0
+  }
+  return Math.abs(hash)
+}
+// ** Returns a color element based on the length of the fullname
+export function getColorBasedOnName(fullname = "") {
+  const names = fullname.split(' ')
+  const initials = names.map(name => name[0].toUpperCase()).join('')
+  const hashCode = getHashCode(initials)
+  const elements = [
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'info',
+    'warning',
+    'dark',
+    'light-primary',
+    'light-secondary',
+    'light-success',
+    'light-info',
+    'light-warning',
+    'light-dark'
+  ]
+  const index = hashCode % elements.length
+  return elements[index]
+}
+
+
 // ** Returns K format from a number
 export const kFormatter = num => (num > 999 ? `${(num / 1000).toFixed(1)}k` : num)
 

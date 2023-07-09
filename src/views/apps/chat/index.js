@@ -6,6 +6,8 @@ import Chat from './Chat'
 import Sidebar from './SidebarLeft'
 import UserProfileSidebar from './UserProfileSidebar'
 
+import { useParams } from 'react-router-dom'
+
 // ** Third Party Components
 import classnames from 'classnames'
 
@@ -20,7 +22,7 @@ const AppChat = () => {
   // ** Store Vars
   const dispatch = useDispatch()
   const store = useSelector(state => state.chat)
-
+  const { user_id } = useParams()
   // ** States
   const [user, setUser] = useState({})
   const [sidebar, setSidebar] = useState(false)
@@ -39,12 +41,14 @@ const AppChat = () => {
 
   // ** Set user function for Right Sidebar
   const handleUser = obj => setUser(obj)
-
   // ** Get data on Mount
   useEffect(() => {
     dispatch(getChatContacts())
     dispatch(getUserProfile())
   }, [dispatch])
+  useEffect(() => {
+    // console.log(user_id)
+  }, [user_id])
 
   return (
     <Fragment>

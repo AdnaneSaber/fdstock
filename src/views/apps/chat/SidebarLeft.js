@@ -4,12 +4,9 @@ import { useState, useEffect } from 'react'
 // ** Custom Components
 import Avatar from '@components/avatar'
 
-// ** Store & Actions
-import { selectChat } from './store'
-import { useDispatch } from 'react-redux'
-
 // ** Utils
-import { formatDateToMonthShort, isObjEmpty } from '@utils'
+import { formatDateToMonthShort, getColorBasedOnName } from '@utils'
+import axios from 'axios'
 
 // ** Third Party Components
 import classnames from 'classnames'
@@ -18,40 +15,51 @@ import { X, Search, CheckSquare, Bell, User, Trash } from 'react-feather'
 
 // ** Reactstrap Imports
 import { CardText, InputGroup, InputGroupText, Badge, Input, Button, Label } from 'reactstrap'
+import { Link, useParams } from 'react-router-dom'
+import moment from 'moment'
 
 const SidebarLeft = props => {
   // ** Props & Store
   const { store, sidebar, handleSidebar, userSidebarLeft, handleUserSidebarLeft } = props
-  const { chats, contacts, userProfile } = store
+  const { userProfile } = store
 
   // ** Dispatch
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   // ** State
   const [query, setQuery] = useState('')
   const [about, setAbout] = useState('')
-  const [active, setActive] = useState(0)
   const [status, setStatus] = useState('online')
   const [filteredChat, setFilteredChat] = useState([])
+  const [chats, setChats] = useState([])
+  const [contacts, setContacts] = useState([])
+  const { user_id } = useParams()
   const [filteredContacts, setFilteredContacts] = useState([])
 
-  // ** Handles User Chat Click
-  const handleUserClick = id => {
-    dispatch(selectChat(id))
-    setActive(id)
-    if (sidebar === true) {
-      handleSidebar()
-    }
+  async function getChats() {
+    const userData = JSON.parse(localStorage.getItem('userData'))
+    const { data } = await axios.post(`${process.env.REACT_APP_API}/messages`, {
+        token: userData.token
+    })
+    const new_data = data.sort((a, b) => new Date(b.last_timestamp) - new Date(a.last_timestamp))
+    setChats(new_data)
+    return new_data
   }
-
+  async function getContacts(chats) {
+    const userData = JSON.parse(localStorage.getItem('userData'))
+    const { data } = await axios.post(`${process.env.REACT_APP_API}/profiles`, {
+        token: userData.token
+    })
+    const chat_ids = chats.map(chat => chat._id)
+    console.log(chat_ids)
+    const new_data = data.filter(user => chat_ids.indexOf(user.public_id) === -1)
+    setContacts(new_data)
+  }
   useEffect(() => {
-    if (!isObjEmpty(store.selectedUser)) {
-      if (store.selectedUser.chat) {
-        setActive(store.selectedUser.chat.id)
-      } else {
-        setActive(store.selectedUser.contact.id)
-      }
-    }
+    (async function() {
+      const _chats = await getChats()
+      await getContacts(_chats)
+    })()
   }, [])
 
   // ** Renders Chat
@@ -67,32 +75,37 @@ const SidebarLeft = props => {
         const arrToMap = query.length && filteredChat.length ? filteredChat : chats
 
         return arrToMap.map(item => {
-          const time = formatDateToMonthShort(item.chat.lastMessage ? item.chat.lastMessage.time : new Date())
+          const time = formatDateToMonthShort(moment(item.last_timestamp))
 
           return (
-            <li
-              key={item.id}
-              onClick={() => handleUserClick(item.id)}
-              className={classnames({
-                active: active === item.id
-              })}
+            <Link to={`/apps/chat/${item.sender._id}`}
+              key={item._id}
             >
-              <Avatar img={item.avatar} imgHeight='42' imgWidth='42' status={item.status} />
-              <div className='chat-info flex-grow-1'>
-                <h5 className='mb-0'>{item.fullName}</h5>
-                <CardText className='text-truncate'>
-                  {item.chat.lastMessage ? item.chat.lastMessage.message : chats[chats.length - 1].message}
-                </CardText>
-              </div>
-              <div className='chat-meta text-nowrap'>
-                <small className='float-end mb-25 chat-time ms-25'>{time}</small>
-                {item.chat.unseenMsgs >= 1 ? (
-                  <Badge className='float-end' color='danger' pill>
-                    {item.chat.unseenMsgs}
-                  </Badge>
-                ) : null}
-              </div>
-            </li>
+              <li
+                className={classnames({
+                  active: user_id === item._id
+                })}
+              >
+                  
+                  <div style={{width:42, height: 42}}>
+                    <Avatar content={item.sender.name} color={getColorBasedOnName(item.sender.name)} style={{width: "100%", display:"flex", justifyContent:"center", alignItems:"center"}} initials status="online" />
+                  </div>
+                  <div className='chat-info flex-grow-1'>
+                    <h5 className='mb-0'>{item.sender.name}</h5>
+                    <CardText className='text-truncate'>
+                      {item.last_message}
+                    </CardText>
+                  </div>
+                  <div className='chat-meta text-nowrap'>
+                    <small className='float-end mb-25 chat-time ms-25'>{time}</small>
+                    {item.unseen_messages ? (
+                      <Badge className='float-end' color='danger' pill>
+                        {item.unseen_messages}
+                      </Badge>
+                    ) : null}
+                  </div>
+              </li>
+            </Link>
           )
         })
       }
@@ -107,20 +120,24 @@ const SidebarLeft = props => {
       if (query.length && !filteredContacts.length) {
         return (
           <li className='no-results show'>
-            <h6 className='mb-0'>No Chats Found</h6>
+            <h6 className='mb-0'>No Contacts Found</h6>
           </li>
         )
       } else {
         const arrToMap = query.length && filteredContacts.length ? filteredContacts : contacts
         return arrToMap.map(item => {
           return (
-            <li key={item.fullName} onClick={() => handleUserClick(item.id)}>
-              <Avatar img={item.avatar} imgHeight='42' imgWidth='42' />
-              <div className='chat-info flex-grow-1'>
-                <h5 className='mb-0'>{item.fullName}</h5>
-                <CardText className='text-truncate'>{item.about}</CardText>
-              </div>
-            </li>
+            <Link to={`/apps/chat/${item.public_id}`} key={item._id}>
+              <li>
+                <div style={{width:42, height: 42}}>
+                  <Avatar content={item.name} color={getColorBasedOnName(item.name)} style={{width: "100%", display:"flex", justifyContent:"center", alignItems:"center"}} initials status="online" />
+                </div>
+                <div className='chat-info flex-grow-1'>
+                  <h5 className='mb-0'>{item.name}</h5>
+                  <CardText className='text-truncate'><i>@{item.username}</i></CardText>
+                </div>
+              </li>
+            </Link>
           )
         })
       }
@@ -132,9 +149,10 @@ const SidebarLeft = props => {
   // ** Handles Filter
   const handleFilter = e => {
     setQuery(e.target.value)
-    const searchFilterFunction = contact => contact.fullName.toLowerCase().includes(e.target.value.toLowerCase())
+    const searchFilterFunction = contact => contact.sender.name.toLowerCase().includes(e.target.value.toLowerCase())
+    const searchContactFilterFunction = contact => contact.name.toLowerCase().includes(e.target.value.toLowerCase())
     const filteredChatsArr = chats.filter(searchFilterFunction)
-    const filteredContactssArr = contacts.filter(searchFilterFunction)
+    const filteredContactssArr = contacts.filter(searchContactFilterFunction)
     setFilteredChat([...filteredChatsArr])
     setFilteredContacts([...filteredContactssArr])
   }

@@ -37,7 +37,7 @@ const AppRoutes = [
     appLayout: true,
     className: 'upload-image',
     component: lazy(() => import('../../views/apps/upload'))
-  }
+  },
   // {
   //   path: '/apps/email/:folder',
   //   exact: true,
@@ -68,9 +68,16 @@ const AppRoutes = [
   // {
   //   path: '/apps/chat',
   //   appLayout: true,
+  //   exact: true,
   //   className: 'chat-application',
   //   component: lazy(() => import('../../views/apps/chat'))
   // },
+  {
+    path: '/apps/chat/:user_id?',
+    appLayout: true,
+    className: 'chat-application',
+    component: lazy(() => import('../../views/apps/chat'))
+  },
   // {
   //   path: '/apps/todo',
   //   exact: true,
@@ -97,10 +104,10 @@ const AppRoutes = [
   //     navLink: '/apps/todo'
   //   }
   // },
-  // {
-  //   path: '/apps/calendar',
-  //   component: lazy(() => import('../../views/apps/calendar'))
-  // },
+  {
+    path: '/apps/calendar',
+    component: lazy(() => import('../../views/apps/calendar'))
+  }
   // {
   //   path: '/apps/invoice/list',
   //   component: lazy(() => import('../../views/apps/invoice/list'))

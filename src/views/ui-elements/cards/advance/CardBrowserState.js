@@ -13,20 +13,8 @@ import {
   UncontrolledTooltip
 } from 'reactstrap'
 
-import { percentage } from '@utils'
-
 const CardBrowserState = ({ colors, trackBgColor }) => {
-  // const [data, setData] = useState(null)
   const [browsers, setBrowsers] = useState(null)
-  const correspondant = {
-    "Google Chrome": "chrome",
-    "Mozila Firefox": "firefox",
-    "Apple Safari": "safari",
-    "Internet Explorer": "ie",
-    Opera: "opera",
-    Edge: "Microsoft Edge",
-    Unknown: "unknown"
-  }
   const statesArr = [
     {
       avatar: require('@src/assets/images/icons/google-chrome.png').default,
@@ -349,12 +337,17 @@ const CardBrowserState = ({ colors, trackBgColor }) => {
     if (res.data !== null) {
 
       setBrowsers(statesArr.map(browser => {
+        const convertedData = {}
+        for (const key in res.data) {
+          const { key: browserName, value } = res.data[key]
+          convertedData[browserName] = value
+        }
         return {
           ...browser,
           value: `${res.data.filter(e => e.key === browser.title)[0].value * 100}%`,
           chart: {
             ...browser.chart,
-            series: [percentage(parseInt(res.data[correspondant[browser.title]]), res.data.filter(e => e.key === "count")[0].value)]
+            series: [convertedData[browser.title] * 100]
           }
         }
       }))
@@ -377,7 +370,7 @@ const CardBrowserState = ({ colors, trackBgColor }) => {
               <h6 className='align-self-center mb-0'>{state.title}</h6>
             </div>
             <div className='d-flex align-items-center'>
-              <div className='fw-bold text-body-heading me-1'>{state.value}</div>
+              <div className='fw-bold text-body-heading me-1'>{`${parseFloat(state.value).toFixed(1).toString()}%`}</div>
               <Chart
                 options={state.chart.options}
                 series={state.chart.series}
