@@ -20,7 +20,7 @@ import { User, Mail, CheckSquare, MessageSquare, Settings, CreditCard, HelpCircl
 import { UncontrolledDropdown, DropdownMenu, DropdownToggle, DropdownItem } from 'reactstrap'
 
 // ** Default Avatar Image
-import defaultAvatar from '@src/assets/images/portrait/small/avatar-s-19.jpg'
+import defaultAvatar from '@src/assets/images/portrait/small/avatar77.png'
 
 const UserDropdown = () => {
   // ** Store Vars
