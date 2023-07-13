@@ -78,9 +78,9 @@ const GalleryApp = () => {
             <Row>
                 <Col md="4">
                     <Input type='select' onChange={e => setHasNoFace(e.target.value)}>
-                        <option value='null'>Toutes les images</option>
-                        <option value='true'>Exclure les visages</option>
-                        <option value='false'>Inclure les visages</option>
+                        <option value='null'>All Images</option>
+                        <option value='true'>Exclude faces</option>
+                        <option value='false'>Include faces</option>
                     </Input>
                     <FormText className='text-muted'>Filtre avec l'IA si les images contiennent un visage humain.</FormText>
                 </Col>

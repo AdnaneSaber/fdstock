@@ -16,7 +16,7 @@ const filters = [
   { label: 'Business', color: 'secondary', className: 'form-check-secondary mb-1' },
   { label: 'Family', color: 'warning', className: 'form-check-warning mb-1' },
   { label: 'Holiday', color: 'success', className: 'form-check-success mb-1' },
-  { label: 'ETC', color: 'info', className: 'form-check-info' }
+  { label: 'Meeting', color: 'info', className: 'form-check-info' }
 ]
 
 const SidebarLeft = props => {

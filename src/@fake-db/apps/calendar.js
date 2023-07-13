@@ -64,7 +64,7 @@ const data = {
       end: new Date(date.getFullYear(), date.getMonth() + 1, -12),
       allDay: true,
       extendedProps: {
-        calendar: 'ETC'
+        calendar: 'Meeting'
       }
     },
     {

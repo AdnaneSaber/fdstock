@@ -17,12 +17,12 @@ import { Modal, ModalBody, Button, Form, Input, Label, FormFeedback } from 'reac
 import { isObjEmpty, selectThemeColors } from '@utils'
 
 // ** Assignee Avatars
-import img1 from '@src/assets/images/portrait/small/avatar-s-3.jpg'
+import img1 from '@src/assets/images/portrait/small/av2.jpg'
 import img2 from '@src/assets/images/portrait/small/avatar-s-1.jpg'
-import img3 from '@src/assets/images/portrait/small/avatar-s-4.jpg'
-import img4 from '@src/assets/images/portrait/small/avatar-s-6.jpg'
-import img5 from '@src/assets/images/portrait/small/avatar-s-2.jpg'
-import img6 from '@src/assets/images/portrait/small/avatar-s-11.jpg'
+import img3 from '@src/assets/images/portrait/small/av1.jpg'
+// import img4 from '@src/assets/images/portrait/small/avatar-s-6.jpg'
+// import img5 from '@src/assets/images/portrait/small/avatar-s-2.jpg'
+// import img6 from '@src/assets/images/portrait/small/avatar-s-11.jpg'
 
 // ** Styles Imports
 import '@styles/react/libs/editor/editor.scss'
@@ -72,7 +72,7 @@ const TaskSidebar = props => {
   const { open, handleTaskSidebar, store, dispatch, updateTask, selectTask, addTask, deleteTask } = props
 
   // ** States
-  const [assignee, setAssignee] = useState({ value: 'pheobe', label: 'Pheobe Buffay', img: img1 })
+  const [assignee, setAssignee] = useState('')
   const [tags, setTags] = useState([])
   const [desc, setDesc] = useState(EditorState.createEmpty())
   const [completed, setCompleted] = useState(false)
@@ -92,12 +92,10 @@ const TaskSidebar = props => {
 
   // ** Assignee Select Options
   const assigneeOptions = [
-    { value: 'pheobe', label: 'Pheobe Buffay', img: img1 },
-    { value: 'chandler', label: 'Chandler Bing', img: img2 },
-    { value: 'ross', label: 'Ross Geller', img: img3 },
-    { value: 'monica', label: 'Monica Geller', img: img4 },
-    { value: 'joey', label: 'Joey Tribbiani', img: img5 },
-    { value: 'Rachel', label: 'Rachel Green', img: img6 }
+    { value: 'Adnane Saber', label: 'Adnane Saber', img: img1 },
+    { value: 'Abdelghafour Afirrah', label: 'Abdelghafour Afirrah', img: img2 },
+    { value: 'Hamza Talha', label: 'Hamza Talha', img: img3 }
+
   ]
 
   // ** Tag Select Options
@@ -178,7 +176,7 @@ const TaskSidebar = props => {
     setTags([])
     setDesc('')
     setValue('title', '')
-    setAssignee({ value: 'pheobe', label: 'Pheobe Buffay', img: img1 })
+    setAssignee({ value: 'Adnane Saber', label: 'Adnane Saber', img: img1 })
     setCompleted(false)
     setImportant(false)
     setDueDate(new Date())

@@ -74,17 +74,17 @@ const SupportTracker = props => {
       stroke: {
         dashArray: 8
       },
-      labels: ['Tâches Accomplies']
+      labels: ['Completed Tasks']
     },
     series = [83]
 
   return data !== null ? (
     <Card>
       <CardHeader className='pb-0'>
-        <CardTitle tag='h4'>Rapport des tâches</CardTitle>
+        <CardTitle tag='h4'>Task report</CardTitle>
         <UncontrolledDropdown className='chart-dropdown'>
           <DropdownToggle color='' className='bg-transparent btn-sm border-0 p-50'>
-            Les 7 derniers jours
+            last 7 days
           </DropdownToggle>
           <DropdownMenu end>
             {data.last_days.map(item => (
@@ -99,7 +99,7 @@ const SupportTracker = props => {
         <Row>
           <Col sm='2' className='d-flex flex-column flex-wrap text-center'>
             <h1 className='font-large-2 fw-bolder mt-2 mb-0'>{data.totalTicket}</h1>
-            <CardText>Tâches</CardText>
+            <CardText>Tasks</CardText>
           </Col>
           <Col sm='10' className='d-flex justify-content-center'>
             <Chart options={options} series={series} type='radialBar' height={270} id='support-tracker-card' />
@@ -107,15 +107,15 @@ const SupportTracker = props => {
         </Row>
         <div className='d-flex justify-content-between mt-1'>
           <div className='text-center'>
-            <CardText className='mb-50'>Nouvelles tâches</CardText>
+            <CardText className='mb-50'>New Tasks</CardText>
             <span className='font-large-1 fw-bold'>{data.newTicket}</span>
           </div>
           <div className='text-center'>
-            <CardText className='mb-50'>Tâches ouvertes</CardText>
+            <CardText className='mb-50'>Open tasks</CardText>
             <span className='font-large-1 fw-bold'>{data.openTicket}</span>
           </div>
           <div className='text-center'>
-            <CardText className='mb-50'>Temps de réponse</CardText>
+            <CardText className='mb-50'>Response time</CardText>
             <span className='font-large-1 fw-bold'>{data.responseTime}j</span>
           </div>
         </div>

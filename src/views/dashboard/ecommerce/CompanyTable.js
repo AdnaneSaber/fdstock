@@ -203,9 +203,9 @@ const CompanyTable = () => {
           <tr style={{gridTemplateColumns:"repeat(8, minmax(0, 1fr))", display:"grid"}}>
             <th>#</th>
             <th>Image</th>
-            <th style={{gridColumn:"span 4 / span 4"}}>Catégorie</th>
-            <th>Vues</th>
-            <th>Téléchargment</th>
+            <th style={{gridColumn:"span 4 / span 4"}}>Image Name</th>
+            <th>VIEWS</th>
+            <th>DOWNLOAD</th>
           </tr>
         </thead>
         <tbody>{renderData()}</tbody>
