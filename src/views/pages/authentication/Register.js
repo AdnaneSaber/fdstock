@@ -224,7 +224,7 @@ const Register = () => {
                     <Input
                       type="text"
                       id="register-name"
-                      placeholder="John Doe"
+                      placeholder="type your name"
                       invalid={errors.name && true}
                       {...field}
                     />
@@ -244,7 +244,6 @@ const Register = () => {
                   control={control}
                   render={({ field }) => (
                     <Input
-                      autoFocus
                       type='text'
                       placeholder="Role..."
                       id="register-username"
@@ -267,6 +266,7 @@ const Register = () => {
                   control={control}
                   render={({ field }) => (
                     <Input
+                    autoFocus
                       type="email"
                       placeholder="type your email"
                       id="register-email"
