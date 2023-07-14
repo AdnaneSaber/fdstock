@@ -6,7 +6,7 @@ import classnames from 'classnames'
 import Flatpickr from 'react-flatpickr'
 import { Editor } from 'react-draft-wysiwyg'
 import { X, Star, Trash } from 'react-feather'
-import Select, { components } from 'react-select'
+import Select from 'react-select'
 import { useForm, Controller } from 'react-hook-form'
 import { EditorState, ContentState } from 'draft-js'
 
@@ -18,7 +18,7 @@ import { isObjEmpty, selectThemeColors } from '@utils'
 
 // ** Assignee Avatars
 import img1 from '@src/assets/images/portrait/small/av2.jpg'
-import img2 from '@src/assets/images/portrait/small/avatar-s-1.jpg'
+import img2 from '@src/assets/images/portrait/small/av3.jpg'
 import img3 from '@src/assets/images/portrait/small/av1.jpg'
 // import img4 from '@src/assets/images/portrait/small/avatar-s-6.jpg'
 // import img5 from '@src/assets/images/portrait/small/avatar-s-2.jpg'

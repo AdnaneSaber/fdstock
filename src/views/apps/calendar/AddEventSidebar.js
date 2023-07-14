@@ -21,7 +21,7 @@ import { selectThemeColors, isObjEmpty } from '@utils'
 
 // ** Avatar Images
 import img1 from '@src/assets/images/portrait/small/av2.jpg'
-import img2 from '@src/assets/images/portrait/small/avatar-s-1.jpg'
+import img2 from '@src/assets/images/portrait/small/av3.jpg'
 import img3 from '@src/assets/images/portrait/small/av1.jpg'
 import img4 from '@src/assets/images/avatars/7-small.png'
 import img5 from '@src/assets/images/avatars/9-small.png'
