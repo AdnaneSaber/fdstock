@@ -24,8 +24,8 @@ const data = {
       description:
         'Chocolate cake topping bonbon jujubes donut sweet wafer. Marzipan gingerbread powder brownie bear claw. Chocolate bonbon sesame snaps jelly caramels oat cake.',
       assignee: {
-        fullName: 'Hamza Talha',
-        avatar: require('@src/assets/images/portrait/small/av1.jpg').default
+         fullName: 'Adnane Saber',
+        avatar: require('@src/assets/images/portrait/small/av2.jpg').default
       },
       tags: ['team', 'medium'],
       isCompleted: true,
@@ -54,8 +54,8 @@ const data = {
       description:
         'Chocolate cake topping bonbon jujubes donut sweet wafer. Marzipan gingerbread powder brownie bear claw. Chocolate bonbon sesame snaps jelly caramels oat cake.',
       assignee: {
-        fullName: 'Hamza Talha',
-        avatar: require('@src/assets/images/portrait/small/av1.jpg').default
+       fullName: 'Adnane Saber',
+        avatar: require('@src/assets/images/portrait/small/av2.jpg').default
       },
       tags: ['medium'],
       isCompleted: false,
