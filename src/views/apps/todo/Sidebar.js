@@ -61,7 +61,7 @@ const TodoSidebar = props => {
                   onClick={() => handleFilter('')}
                 >
                   <Mail className='me-75' size={18} />
-                  <span className='align-middle'>My Tasks</span>
+                  <span className='align-middle'>Tasks</span>
                 </ListGroupItem>
                 <ListGroupItem
                   tag={Link}
