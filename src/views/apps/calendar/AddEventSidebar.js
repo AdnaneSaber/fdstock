@@ -20,12 +20,12 @@ import { Button, Modal, ModalHeader, ModalBody, Label, Input, Form } from 'react
 import { selectThemeColors, isObjEmpty } from '@utils'
 
 // ** Avatar Images
-import img1 from '@src/assets/images/portrait/small/av2.jpg'
-import img2 from '@src/assets/images/portrait/small/av3.jpg'
-import img3 from '@src/assets/images/portrait/small/av1.jpg'
-import img4 from '@src/assets/images/avatars/7-small.png'
-import img5 from '@src/assets/images/avatars/9-small.png'
-import img6 from '@src/assets/images/avatars/11-small.png'
+// import img1 from '@src/assets/images/portrait/small/av2.jpg'
+// import img2 from '@src/assets/images/portrait/small/av3.jpg'
+// import img3 from '@src/assets/images/portrait/small/av1.jpg'
+// import img4 from '@src/assets/images/avatars/7-small.png'
+// import img5 from '@src/assets/images/avatars/9-small.png'
+// import img6 from '@src/assets/images/avatars/11-small.png'
 
 // ** Styles Imports
 import '@styles/react/libs/react-select/_react-select.scss'
@@ -92,9 +92,9 @@ const AddEventSidebar = props => {
   ]
 
   const guestsOptions = [
-    { value: 'Adnane Saber', label: 'Adnane Saber', avatar: img1 },
-    { value: 'Abdelghafour Afirrah', label: 'Abdelghafour Afirrah', avatar: img2 },
-    { value: 'Hamza Talha', label: 'Hamza Talha', avatar: img3 }
+    { value: 'Adnane Saber', label: 'Adnane Saber'},
+    { value: 'Abdelghafour Afirrah', label: 'Abdelghafour Afirrah'},
+    { value: 'Hamza Talha', label: 'Hamza Talha'}
     // { value: 'Lori Spears', label: 'Lori Spears', avatar: img4 },
     // { value: 'Sandy Vega', label: 'Sandy Vega', avatar: img5 },
     // { value: 'Cheryl May', label: 'Cheryl May', avatar: img6 }
@@ -114,7 +114,7 @@ const AddEventSidebar = props => {
     return (
       <components.Option {...props}>
         <div className='d-flex flex-wrap align-items-center'>
-          <Avatar className='my-0 me-1' size='sm' img={data.avatar} />
+          {/* <Avatar className='my-0 me-1' size='sm' img={data.avatar} /> */}
           <div>{data.label}</div>
         </div>
       </components.Option>

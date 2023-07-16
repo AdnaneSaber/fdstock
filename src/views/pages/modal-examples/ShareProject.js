@@ -31,9 +31,9 @@ import { FileText, Users, Link } from 'react-feather'
 import { selectThemeColors } from '@utils'
 
 // ** Avatars
-import avatar1 from '@src/assets/images/avatars/1-small.png'
-import avatar2 from '@src/assets/images/avatars/3-small.png'
-import avatar3 from '@src/assets/images/avatars/5-small.png'
+// import avatar1 from '@src/assets/images/avatars/1-small.png'
+// import avatar2 from '@src/assets/images/avatars/3-small.png'
+// import avatar3 from '@src/assets/images/avatars/5-small.png'
 // import avatar4 from '@src/assets/images/avatars/7-small.png'
 // import avatar5 from '@src/assets/images/avatars/9-small.png'
 // import avatar6 from '@src/assets/images/avatars/11-small.png'
@@ -49,9 +49,9 @@ import portrait7 from '@src/assets/images/portrait/small/avatar-s-8.jpg'
 import portrait8 from '@src/assets/images/portrait/small/avatar-s-6.jpg'
 
 const options = [
-  { value: 'Adnane Saber', label: 'Adnane Saber', avatar: avatar1 },
-  {value: 'Abdelghafour Afirrah', label: 'Abdelghafour Afirrah', avatar: avatar2 },
-  {value: 'Hamza Talha', label: 'Hamza Talha', avatar: avatar3 }
+  { value: 'Adnane Saber', label: 'Adnane Saber' },
+  {value: 'Abdelghafour Afirrah', label: 'Abdelghafour Afirrah'},
+  {value: 'Hamza Talha', label: 'Hamza Talha' }
   // { value: 'Lori Spears', label: 'Lori Spears', avatar: avatar4 },
   // { value: 'Sandy Vega', label: 'Sandy Vega', avatar: avatar5 },
   // { value: 'Cheryl May', label: 'Cheryl May', avatar: avatar6 }

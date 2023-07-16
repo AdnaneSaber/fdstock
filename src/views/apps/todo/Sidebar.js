@@ -11,7 +11,7 @@ import { Button, ListGroup, ListGroupItem } from 'reactstrap'
 
 const TodoSidebar = props => {
   // ** Props
-  const { handleTaskSidebar, setMainSidebar, mainSidebar, dispatch, getTasks, params } = props
+  const {  mainSidebar, dispatch, getTasks, params } = props
 
   // ** Functions To Handle List Item Filter
   const handleFilter = filter => {
@@ -32,10 +32,10 @@ const TodoSidebar = props => {
   }
 
   // ** Functions To Handle Add Task Click
-  const handleAddClick = () => {
-    handleTaskSidebar()
-    setMainSidebar()
-  }
+  // const handleAddClick = () => {
+  //   handleTaskSidebar()
+  //   setMainSidebar()
+  // }
 
   return (
     <div
@@ -47,9 +47,9 @@ const TodoSidebar = props => {
         <div className='sidebar-content todo-sidebar'>
           <div className='todo-app-menu'>
             <div className='add-task'>
-              <Button color='primary' onClick={handleAddClick} block>
+              {/* <Button color='primary' onClick={handleAddClick} block >
                 Add Task
-              </Button>
+              </Button> */}
             </div>
             <PerfectScrollbar className='sidebar-menu-list' options={{ wheelPropagation: false }}>
               <ListGroup tag='div' className='list-group-filters'>

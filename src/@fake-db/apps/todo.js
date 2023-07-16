@@ -2,15 +2,16 @@ import mock from '../mock'
 
 const data = {
   tasks: [
+ 
     {
       id: 1,
-      title: 'Entire change break our wife wide it daughter mention member.',
+      title: 'Plan a party for development team 🎁',
       dueDate: '2020-11-25',
       description:
         'Chocolate cake topping bonbon jujubes donut sweet wafer. Marzipan gingerbread powder brownie bear claw. Chocolate bonbon sesame snaps jelly caramels oat cake.',
       assignee: {
-        fullName: 'Adnane Saber',
-        avatar: require('@src/assets/images/portrait/small/av2.jpg').default
+        fullName: 'Hamza Talha',
+        avatar: 'Hamza Talha'
       },
       tags: ['update'],
       isCompleted: false,
@@ -19,13 +20,13 @@ const data = {
     },
     {
       id: 2,
-      title: 'Citizen stand administration step agency century.',
+      title: 'Send PPT with real-time reports',
       dueDate: '2020-12-14',
       description:
         'Chocolate cake topping bonbon jujubes donut sweet wafer. Marzipan gingerbread powder brownie bear claw. Chocolate bonbon sesame snaps jelly caramels oat cake.',
       assignee: {
-         fullName: 'Adnane Saber',
-        avatar: require('@src/assets/images/portrait/small/av2.jpg').default
+        fullName: 'Hamza Talha',
+        avatar: 'Hamza Talha'
       },
       tags: ['team', 'medium'],
       isCompleted: true,
@@ -34,13 +35,13 @@ const data = {
     },
     {
       id: 3,
-      title: 'Meet Jane and ask for coffee ❤️',
+      title: 'Fix Responsiveness for new structure 💻',
       dueDate: '2020-11-25',
       description:
         'Chocolate cake topping bonbon jujubes donut sweet wafer. Marzipan gingerbread powder brownie bear claw. Chocolate bonbon sesame snaps jelly caramels oat cake.',
       assignee: {
-        fullName: 'Abdelghafour Afirrah',
-        avatar: require('@src/assets/images/portrait/small/av3.jpg').default
+        fullName: 'Hamza Talha',
+        avatar: 'Hamza Talha'
       },
       tags: ['high'],
       isCompleted: false,
@@ -49,13 +50,13 @@ const data = {
     },
     {
       id: 4,
-      title: 'Answer the support tickets and close completed tickets. ',
+      title: 'Skype Tommy for project status & report',
       dueDate: '2020-11-20',
       description:
         'Chocolate cake topping bonbon jujubes donut sweet wafer. Marzipan gingerbread powder brownie bear claw. Chocolate bonbon sesame snaps jelly caramels oat cake.',
       assignee: {
-       fullName: 'Adnane Saber',
-        avatar: require('@src/assets/images/portrait/small/av2.jpg').default
+        fullName: 'Hamza Talha',
+        avatar: 'Hamza Talha'
       },
       tags: ['medium'],
       isCompleted: false,
@@ -64,18 +65,33 @@ const data = {
     },
     {
       id: 5,
-      title: 'Test functionality of apps developed by dev team for enhancements. ',
+      title: 'List out all the SEO resources and send it to new SEO team. ',
       dueDate: '2020-12-06',
       description:
         'Chocolate cake topping bonbon jujubes donut sweet wafer. Marzipan gingerbread powder brownie bear claw. Chocolate bonbon sesame snaps jelly caramels oat cake.',
       assignee: {
-        fullName: 'Abdelghafour Afirrah',
-        avatar: require('@src/assets/images/portrait/small/av3.jpg').default
+        fullName: 'Hamza Talha',
+        avatar: 'Hamza Talha'
       },
       tags: ['medium'],
       isCompleted: true,
       isDeleted: false,
       isImportant: true
+    },
+    {
+      id: 6,
+      title: 'random task',
+      dueDate: '2020-11-25',
+      description:
+        'Chocolate cake topping bonbon jujubes donut sweet wafer. Marzipan gingerbread powder brownie bear claw. Chocolate bonbon sesame snaps jelly caramels oat cake.',
+      assignee: {
+        fullName: 'Hamza Talha',
+        avatar: 'Hamza Talha'
+      },
+      tags: ['update'],
+      isCompleted: false,
+      isDeleted: false,
+      isImportant: false
     }
     // {
     //   id: 6,

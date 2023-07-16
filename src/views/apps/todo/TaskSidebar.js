@@ -17,9 +17,9 @@ import { Modal, ModalBody, Button, Form, Input, Label, FormFeedback } from 'reac
 import { isObjEmpty, selectThemeColors } from '@utils'
 
 // ** Assignee Avatars
-import img11 from '@src/assets/images/portrait/small/av2.jpg'
-import img22 from '@src/assets/images/portrait/small/av3.jpg'
-import img33 from '@src/assets/images/portrait/small/av1.jpg'
+// import img11 from '@src/assets/images/portrait/small/av2.jpg'
+// import img22 from '@src/assets/images/portrait/small/av3.jpg'
+// import img33 from '@src/assets/images/portrait/small/av1.jpg'
 // import img1 from '@src/assets/images/portrait/small/avatar-s-3.jpg'
 // import img2 from '@src/assets/images/portrait/small/avatar-s-1.jpg'
 // import img3 from '@src/assets/images/portrait/small/avatar-s-4.jpg'
@@ -75,7 +75,7 @@ const TaskSidebar = props => {
   const { open, handleTaskSidebar, store, dispatch, updateTask, selectTask, addTask, deleteTask } = props
 
   // ** States
-  const [assignee, setAssignee] = useState({ value: 'Adnane Saber', label: 'Adnane Saber', img: img11 })
+  const [assignee, setAssignee] = useState({ value: 'Adnane Saber', label: 'Adnane Saber' })
   const [tags, setTags] = useState([])
   const [desc, setDesc] = useState(EditorState.createEmpty())
   const [completed, setCompleted] = useState(false)
@@ -95,9 +95,9 @@ const TaskSidebar = props => {
 
   // ** Assignee Select Options
   const assigneeOptions = [
-    { value: 'Adnane Saber', label: 'Adnane Saber', img: img11 },
-    { value: 'Abdelghafour Afirrah', label: 'Abdelghafour Afirrah', img: img22 },
-    { value: 'Hamza Talha', label: 'Hamza Talha', img: img33 }
+    { value: 'Adnane Saber', label: 'Adnane Saber'},
+    { value: 'Abdelghafour Afirrah', label: 'Abdelghafour Afirrah'},
+    { value: 'Hamza Talha', label: 'Hamza Talha'}
     // { value: 'pheobe', label: 'Pheobe Buffay', img: img1 },
     // { value: 'chandler', label: 'Chandler Bing', img: img2 },
     // { value: 'ross', label: 'Ross Geller', img: img3 },
@@ -120,7 +120,7 @@ const TaskSidebar = props => {
     return (
       <components.Option {...props}>
         <div className='d-flex align-items-center'>
-          <img className='d-block rounded-circle me-50' src={data.img} height='26' width='26' alt={data.label} />
+          {/* <img className='d-block rounded-circle me-50' src={data.img} height='26' width='26' alt={data.label} /> */}
           <p className='mb-0'>{data.label}</p>
         </div>
       </components.Option>
@@ -184,7 +184,7 @@ const TaskSidebar = props => {
     setTags([])
     setDesc('')
     setValue('title', '')
-    setAssignee({ value: 'Adnane Saber', label: 'Adnane Saber', img: img11 })
+    setAssignee({ value: 'Adnane Saber', label: 'Adnane Saber' })
     setCompleted(false)
     setImportant(false)
     setDueDate(new Date())

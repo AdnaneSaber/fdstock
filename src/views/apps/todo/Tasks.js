@@ -82,7 +82,7 @@ const Tasks = props => {
     if (item.avatar === undefined || item.avatar === null) {
       return <Avatar img={blankAvatar} imgHeight='32' imgWidth='32' />
     } else if (item.avatar !== '') {
-      return <Avatar img={item.avatar} imgHeight='32' imgWidth='32' />
+      return <Avatar img={blankAvatar} imgHeight='32' imgWidth='32' />
     } else {
       return <Avatar color={resolveAvatarVariant(obj.tags)} content={item.fullName} initials />
     }
@@ -147,6 +147,7 @@ const Tasks = props => {
                           {new Date(item.dueDate).getDate().toString().padStart(2, '0')}
                         </small>
                       ) : null}
+                      <span className='todo-title'>{item.assignee.fullName}</span>
                       {item.assignee ? renderAvatar(item) : null}
                     </div>
                   </div>
